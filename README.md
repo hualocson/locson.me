@@ -1,36 +1,189 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Loc Son's Personal Website
 
-## Getting Started
+A modern, minimal personal website built with Next.js, featuring dynamic art backgrounds, MDX blog support, and a clean design system.
 
-First, run the development server:
+## ✨ Features
+
+- **Modern Tech Stack**: Built with Next.js 15, React 19, and TypeScript
+- **Dynamic Art Backgrounds**: Interactive visual elements using PIXI.js
+- **MDX Blog Support**: Write blog posts in MDX with custom components
+- **Dark/Light Theme**: System preference detection with manual toggle
+- **Responsive Design**: Mobile-first approach with Tailwind CSS
+- **SEO Optimized**: Proper meta tags and structured data
+- **Performance Focused**: Optimized images and code splitting
+- **Custom Typography**: Inter and Roboto Condensed fonts
+- **Magic Links**: Custom MDX plugin for enhanced link formatting
+
+## 🚀 Tech Stack
+
+### Core
+
+- **Next.js 15** - React framework with App Router
+- **React 19** - UI library
+- **TypeScript** - Type safety
+- **Tailwind CSS 4** - Utility-first CSS framework
+
+### Content & Styling
+
+- **MDX** - Markdown with JSX components
+- **mdx-bundler** - MDX compilation and bundling
+- **remark-gfm** - GitHub Flavored Markdown support
+- **next-themes** - Theme management
+- **Lucide React** - Icon library
+
+### Interactive Elements
+
+- **PIXI.js** - 2D WebGL renderer for art backgrounds
+- **simplex-noise** - Procedural noise generation
+- **class-variance-authority** - Component variant management
+
+### Development
+
+- **ESLint** - Code linting
+- **Prettier** - Code formatting
+- **TypeScript ESLint** - TypeScript-specific linting rules
+
+## 📁 Project Structure
+
+```
+src/
+├── app/                    # Next.js App Router
+│   ├── globals.css        # Global styles
+│   ├── layout.tsx         # Root layout
+│   ├── page.tsx          # Home page
+│   ├── posts/            # Blog posts
+│   └── tailwind.config.ts # Tailwind configuration
+├── components/            # React components
+│   ├── markdown/         # MDX components
+│   ├── ArtBackground.tsx # Dynamic art background
+│   ├── ArtDots.tsx       # Dots animation
+│   ├── ArtPlum.tsx       # Plum animation
+│   ├── Footer.tsx        # Site footer
+│   ├── Header.tsx        # Site header
+│   ├── Navbar.tsx        # Navigation bar
+│   └── ThemeProvider.tsx # Theme context
+├── content/              # MDX content
+│   └── index.mdx         # Home page content
+├── lib/                  # Utility functions
+│   ├── mdx.ts           # MDX compilation
+│   ├── pre-process-mdx.ts # MDX preprocessing
+│   └── utils.ts         # Utility functions
+└── types/               # TypeScript type definitions
+    └── index.d.ts
+```
+
+## 🛠️ Getting Started
+
+### Prerequisites
+
+- Node.js 18+
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/hualocson/locson.me.git
+cd locson.me
+```
+
+2. Install dependencies:
+
+```bash
+npm install
+```
+
+3. Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Build for Production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+## 📝 Writing Content
 
-To learn more about Next.js, take a look at the following resources:
+### Blog Posts
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Create new blog posts by adding `.mdx` files to the `src/content/` directory:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```mdx
+---
+title: "My Blog Post"
+description: "A brief description"
+date: "2024-01-01"
+---
 
-## Deploy on Vercel
+# My Blog Post
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Write your content here using Markdown and JSX components.
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Home Page Content
+
+Edit `src/content/index.mdx` to update the home page content.
+
+### Custom MDX Components
+
+Add custom components in `src/components/markdown/` to use in your MDX files.
+
+## 🎨 Customization
+
+### Themes
+
+The site supports light and dark themes. Theme configuration is in `src/components/ThemeProvider.tsx`.
+
+### Styling
+
+- Global styles: `src/app/globals.css`
+- Tailwind config: `src/app/tailwind.config.ts`
+- Component styles: Inline with Tailwind classes
+
+### Art Backgrounds
+
+Customize the art backgrounds in:
+
+- `src/components/ArtBackground.tsx` - Background selector
+- `src/components/ArtDots.tsx` - Dots animation
+- `src/components/ArtPlum.tsx` - Plum animation
+
+## 🔧 Configuration
+
+### Environment Variables
+
+Create a `.env.local` file for environment-specific variables:
+
+```env
+# Add your environment variables here
+```
+
+### Next.js Configuration
+
+Modify `next.config.ts` for Next.js-specific settings.
+
+## 📦 Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
+
+## 🙏 Acknowledgments
+
+- [Next.js](https://nextjs.org/) for the amazing React framework
+- [Tailwind CSS](https://tailwindcss.com/) for the utility-first CSS framework
+- [MDX](https://mdxjs.com/) for the markdown + JSX experience
+- [PIXI.js](https://pixijs.com/) for the interactive graphics
+- [Lucide](https://lucide.dev/) for the beautiful icons
+
+---
+
+Built with ❤️ by [Loc Son](https://github.com/hualocson)
