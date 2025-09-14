@@ -11,11 +11,12 @@ function ToggleThemeButton() {
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
       className="text-muted-foreground hover:text-foreground cursor-pointer rounded-md transition-colors duration-200"
       aria-label="Toggle theme"
+      title="Toggle Color Schema"
     >
-      {theme === "dark" ? (
-        <Sun className="size-5" />
+      {theme === "light" ? (
+        <Sun className="size-4" />
       ) : (
-        <Moon className="size-5" />
+        <Moon className="size-4" />
       )}
     </button>
   );
