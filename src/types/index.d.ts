@@ -13,3 +13,16 @@ interface Frontmatter {
   tocAlwaysOn?: boolean;
   art?: "plum" | "dots" | "random";
 }
+
+interface IPostFrontmatter {
+  path: string; // slug
+  title: string;
+  place?: string;
+  date: string;
+  lang?: string;
+  desc?: string;
+  platform?: string;
+  duration?: string;
+  inperson?: boolean;
+  redirect?: string; // external link
+}
