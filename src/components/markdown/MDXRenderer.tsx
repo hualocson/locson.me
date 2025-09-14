@@ -4,6 +4,7 @@ import * as React from "react";
 
 import Link from "next/link";
 
+import { cn } from "@/lib/utils";
 import { MDXProvider, useMDXComponents } from "@mdx-js/react";
 import { getMDXComponent } from "mdx-bundler/client";
 
@@ -38,6 +39,15 @@ export function MDXRenderer({ code }: { code: string }) {
           }
           return <Link href={href} {...rest} />;
         },
+        img: ({ className, ...props }) => (
+          <img
+            className={cn(
+              className,
+              "mx-0 my-[2.6em] w-full scale-105 rounded-lg shadow"
+            )}
+            {...props}
+          />
+        ),
       }}
     >
       <Component />
