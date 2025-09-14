@@ -1,27 +1,29 @@
 "use client";
 
-import { useMemo } from "react";
+import { FC, useMemo } from "react";
 
 import ArtDots from "./ArtDots";
 import ArtPlum from "./ArtPlum";
 
-const ArtBackground = () => {
-  const art = useMemo(() => {
-    let art = "random";
+const ArtBackground: FC<{
+  art?: "random" | "plum" | "dots";
+}> = ({ art }) => {
+  const Component = useMemo(() => {
     if (art === "random") {
-      art = Math.random() > 0.5 ? "plum" : "dots";
+      return Math.random() > 0.5 ? <ArtPlum /> : <ArtDots />;
     }
-
     if (art === "plum") {
-      return "plum";
+      return <ArtPlum />;
     }
-    if (art === "dots") {
-      return "dots";
-    }
-    return null;
-  }, []);
 
-  return <>{art === "plum" ? <ArtPlum /> : <ArtDots />}</>;
+    if (art === "dots") {
+      return <ArtDots />;
+    }
+
+    return null;
+  }, [art]);
+
+  return Component;
 };
 
 export default ArtBackground;
