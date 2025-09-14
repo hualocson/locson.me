@@ -173,7 +173,18 @@ export default {
             },
             "ul > li": {
               position: "relative",
-              paddingLeft: "1.5em",
+              paddingLeft: "1.75em",
+            },
+
+            "ul > li::before": {
+              content: "''",
+              position: "absolute",
+              backgroundColor: "#d1d5db",
+              borderRadius: "50%",
+              width: "0.375em",
+              height: "0.375em",
+              top: "calc(0.875em - 0.1875em)",
+              left: "0.25em",
             },
 
             li: {
