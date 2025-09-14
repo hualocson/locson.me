@@ -1,16 +1,14 @@
 import getBaseUrl from "@/lib/get-base-url";
-import { compileMDX, getPostFrontmatter } from "@/lib/mdx";
+import { compileMDX, getPostFrontmatter, getPostsSlugs } from "@/lib/mdx";
 
 import PostWrapper from "@/components/PostWrapper";
 
-const PostPage = async ({ params }: { params: Promise<{ slug: string }> }) => {
-  const { slug } = await params;
-
-  const { code, frontmatter } = await compileMDX(`/posts/${slug}`);
-  return <PostWrapper frontmatter={frontmatter} code={code} />;
-};
-
-export default PostPage;
+export function generateStaticParams() {
+  const posts = getPostsSlugs();
+  return posts.map((post) => ({
+    id: String(post),
+  }));
+}
 
 const baseUrl = getBaseUrl();
 
@@ -50,3 +48,12 @@ export async function generateMetadata({
     },
   };
 }
+
+const PostPage = async ({ params }: { params: Promise<{ slug: string }> }) => {
+  const { slug } = await params;
+
+  const { code, frontmatter } = await compileMDX(`/posts/${slug}`);
+  return <PostWrapper frontmatter={frontmatter} code={code} />;
+};
+
+export default PostPage;
