@@ -12,7 +12,7 @@ export function GET(request: Request) {
   return new ImageResponse(
     (
       <div tw="flex flex-col w-full h-full item-start justify-center bg-[#050505] text-[#bbb] p-8 relative">
-        <span tw="flex w-28 justify-center mx-4 item-center bg-[#8882] rounded-[8px] py-1.5">
+        <span tw="flex w-40 justify-center mx-4 items-center bg-[#8882] rounded-[8px] py-1.5">
           <img
             width="24"
             height="24"
@@ -21,13 +21,13 @@ export function GET(request: Request) {
               borderRadius: 24,
             }}
           />
-          <span tw="ml-2 font-bold">Loc Son</span>
+          <span tw="ml-2 font-bold text-2xl">Loc Son</span>
         </span>
         <div tw="flex flex-col md:flex-row w-full p-4 justify-between">
           {lines.map((line) => (
             <span
               key={line}
-              tw="flex flex-col  text-4xl font-bold tracking-tight text-left"
+              tw="flex flex-col text-[4rem] font-bold tracking-tight text-left"
             >
               {line}
             </span>
