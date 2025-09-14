@@ -8,6 +8,8 @@ const preProcessMDX = (source: string) => {
       "Shadcn UI": "https://ui.shadcn.com",
       React: "https://react.dev",
       TypeScript: "https://www.typescriptlang.org",
+      BetterPrompt: "https://betterprompt.me",
+      SavvyMoney: "https://savvy.vn",
     },
   });
 };
