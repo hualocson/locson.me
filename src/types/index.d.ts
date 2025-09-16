@@ -25,4 +25,6 @@ interface IPostFrontmatter {
   duration?: string;
   inperson?: boolean;
   redirect?: string; // external link
+  toc?: boolean; // show toc
+  tocAlwaysOn?: boolean; // show toc always on (use when have toc = true)
 }
