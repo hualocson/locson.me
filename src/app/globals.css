@@ -288,4 +288,21 @@
     color: var(--s-light, inherit);
     --twoslash-popup-bg: #fafafa;
   }
+
+  .table-of-contents > nav {
+    @apply opacity-0;
+  }
+
+  .toc-always-on.table-of-contents > nav {
+    @apply opacity-60;
+  }
+
+  *:hover > .table-of-contents > div,
+  .toc-always-on.table-of-contents > div {
+    @apply text-[inherit]!;
+  }
+
+  *:hover > .table-of-contents > nav {
+    @apply opacity-75;
+  }
 }
