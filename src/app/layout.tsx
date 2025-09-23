@@ -24,6 +24,9 @@ export const metadata: Metadata = {
   title: "Loc Son",
   description:
     "Personal website of Locson - A passionate developer building beautiful web experiences with Next.js, React, and TypeScript.",
+  other: {
+    appMobileWebAppTitle: "LocSon",
+  },
 };
 
 export default function RootLayout({

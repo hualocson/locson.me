@@ -305,4 +305,46 @@
   *:hover > .table-of-contents > nav {
     @apply opacity-75;
   }
+
+  @media (prefers-reduced-motion) {
+    .path-logo {
+      animation: none !important;
+      stroke-dasharray: unset !important;
+    }
+  }
+  @media print {
+    .path-logo {
+      animation: none !important;
+      stroke-dasharray: unset !important;
+    }
+  }
+
+  @keyframes grow {
+    0% {
+      stroke-dashoffset: 1px;
+      stroke-dasharray: 0 4081px;
+      opacity: 0;
+    }
+    40% {
+      stroke-dasharray: 2040px 0;
+      opacity: 1;
+    }
+    85% {
+      stroke-dasharray: 2040px 0;
+      opacity: 1;
+    }
+    95%,
+    to {
+      stroke-dasharray: 0 4081px;
+      opacity: 0;
+    }
+  }
+
+  .path-logo {
+    stroke-dashoffset: 1px;
+    stroke-dasharray: 4081px 0;
+    animation: grow 10s ease forwards infinite;
+    transform-origin: center;
+    animation-delay: 0s;
+  }
 }
