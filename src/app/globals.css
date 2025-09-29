@@ -322,27 +322,29 @@
   @keyframes grow {
     0% {
       stroke-dashoffset: 1px;
-      stroke-dasharray: 0 4081px;
+      stroke-dasharray: 0 var(--dash);
       opacity: 0;
     }
     40% {
-      stroke-dasharray: 2040px 0;
+      stroke-dasharray: calc(var(--dash) / 2) 0;
       opacity: 1;
     }
     85% {
-      stroke-dasharray: 2040px 0;
+      stroke-dasharray: calc(var(--dash) / 2) 0;
       opacity: 1;
     }
     95%,
     to {
-      stroke-dasharray: 0 4081px;
+      stroke-dasharray: 0 var(--dash);
       opacity: 0;
     }
   }
 
   .path-logo {
+    --dash: 4081px;
+
     stroke-dashoffset: 1px;
-    stroke-dasharray: 4081px 0;
+    stroke-dasharray: var(--dash) 0;
     animation: grow 10s ease forwards infinite;
     transform-origin: center;
     animation-delay: 0s;
