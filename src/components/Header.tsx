@@ -1,15 +1,13 @@
 "use client";
 
-import React from "react";
-
 import Link from "next/link";
 
 import useWindowScroll from "@/app/hooks/useWindownScroll";
 import { cn } from "@/lib/utils";
 import { ArrowUpIcon } from "lucide-react";
 
-import Logo from "./Logo";
 import Navbar from "./Navbar";
+import NewLogo from "./NewLogo";
 
 const Header = () => {
   const { scrollPosition, scrollTo } = useWindowScroll();
@@ -19,7 +17,7 @@ const Header = () => {
         className="absolute m-5 flex h-12 w-12 items-center justify-center outline-none select-none xl:fixed"
         href={"/"}
       >
-        <Logo />
+        <NewLogo />
       </Link>
       <button
         title="Scroll to top"
