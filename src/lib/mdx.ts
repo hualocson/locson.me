@@ -92,7 +92,7 @@ export const compileMDX = async (slug: string) => {
                 tagName: "div",
                 properties: {
                   className:
-                    "fixed top-[120px] bottom-0 left-[20px] text-[0.8em] overflow-hidden w-[100px] lg:w-[200px] xl:w-[300px] flex flex-col z-[200] table-of-contents" +
+                    "fixed hidden top-[120px] bottom-0 left-[20px] text-[0.8em] overflow-hidden w-[100px] lg:w-[200px] xl:w-[300px] flex flex-col z-[200] table-of-contents" +
                     (isTocAlwaysOn ? " toc-always-on" : "") +
                     (!tocEnabled ? " hidden" : ""),
                 },
