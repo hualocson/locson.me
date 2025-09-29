@@ -1,0 +1,115 @@
+---
+title: "How to add keyboard shortcuts in react app"
+description: "Learn how to implement keyboard shortcuts in React using useEffect and a reusable useKeyPress hook. Includes examples for key combinations and reusable logic."
+date: 2025-09-29T13:00:00Z
+duration: 5min
+toc: true
+---
+
+![Cover image for How to add keyboard shortcuts in react app](/images/how-to-add-keyboard-shortcut-in-react-app-cover.png)
+
+This guide explains how to implement keyboard shortcuts in a React application.
+
+---
+
+## Basic Setup
+
+You can use `useEffect` to listen for `keydown` events and handle shortcuts:
+
+```tsx
+useEffect(() => {
+  const handleKeyPress = (event: KeyboardEvent) => {
+    if (event.key === "a") {
+      console.log("Pressed A");
+    }
+  };
+
+  window.addEventListener("keydown", handleKeyPress);
+  return () => {
+    window.removeEventListener("keydown", handleKeyPress);
+  };
+}, []);
+```
+
+👉 Always clean up the event listener to prevent memory leaks.
+
+## Detecting Key Combinations
+
+The KeyboardEvent object provides modifier flags:
+
+- <code className="text-blue-400">{"ctrlKey"}</code>
+- <code className="text-amber-400">{"shiftKey"}</code>
+- <code className="text-green-500">{"altKey"}</code>
+- <code className="text-orange-400">{"metaKey"}</code> (Command `⌘` on Mac,
+  Windows key on PC)
+
+Example:
+
+```tsx
+if (event.key === "a" && event.shiftKey) {
+  console.log("Pressed Shift + A");
+}
+```
+
+## Reusable Hook
+
+To avoid repeating code, create a reusable useKeyPress hook:
+
+```tsx
+import { useEffect, useRef } from "react";
+
+export function useKeyPress(
+  keys: string[],
+  callback: (event: KeyboardEvent) => void,
+  node: HTMLElement | Document = document
+) {
+  const callbackRef = useRef(callback);
+
+  useEffect(() => {
+    callbackRef.current = callback;
+  });
+
+  useEffect(() => {
+    const handleKeyPress = (event: KeyboardEvent) => {
+      if (keys.includes(event.key)) {
+        callbackRef.current(event);
+      }
+    };
+
+    node.addEventListener("keydown", handleKeyPress);
+    return () => {
+      node.removeEventListener("keydown", handleKeyPress);
+    };
+  }, [keys, node]);
+}
+```
+
+## Example Usage
+
+```tsx
+function App() {
+  useKeyPress(["a"], () => {
+    console.log("Shortcut A pressed");
+  });
+
+  useKeyPress(["s"], () => {
+    console.log("Shortcut S pressed");
+  });
+
+  return <div>Try pressing A or S</div>;
+}
+```
+
+## Summary
+
+- Use `useEffect` for basic keydown listeners.
+
+- Check modifier flags for combos like `Shift` + `A`.
+
+- Extract logic into a <code className="text-red-400">{"useKeyPress"}</code> hook for reusability.
+
+- Attach to document or specific elements for flexible control.
+
+---
+
+[How to add keyboard shortcuts in react app](https://devtrium.com/posts/how-keyboard-shortcut) by Devtrium

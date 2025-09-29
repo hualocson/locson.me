@@ -1,0 +1,109 @@
+---
+title: "Mapped Types in TypeScript – Tweak a Type Without Rewriting It"
+description: "Learn how mapped types let you transform existing TypeScript types without redefining them from scratch."
+date: 2025-09-29T13:00:00Z
+duration: 5min
+toc: true
+---
+
+![Cover image for Mapped types in TypeScript](/images/mapped-types-cover.png)
+
+Sometimes you don’t want to create a brand-new type in TypeScript —
+you just want to **transform an existing type** slightly.
+That’s where **mapped types** come in.
+
+---
+
+## What Are Mapped Types?
+
+Mapped types let you take an existing type and **re-map its keys** with modifications.
+Think of it as “copying a type with tweaks.”
+
+Example:
+
+```ts
+type User = {
+  id: number;
+  name: string;
+  email: string;
+};
+
+// Make all fields optional
+type PartialUser = {
+  [K in keyof User]?: User[K];
+};
+```
+
+Now `PartialUser` is `{ id?: number; name?: string; email?: string }`.
+
+## Built-In Helpers
+
+TypeScript already provides common mapped types:
+
+- <code className="text-blue-400">{"Partial<T>"}</code> → makes all properties
+  optional
+- <code className="text-amber-400">{"Required<T>"}</code> → makes all properties
+  required
+- <code className="text-green-500">{"Readonly<T>"}</code>→ makes all properties
+  immutable
+- <code className="text-orange-400">{"Pick<T, Keys>"}</code> → selects a subset
+  of properties
+- <code className="text-cyan-500">{"Record<K, T>"}</code>→ creates an object
+  type with given keys and value type
+
+Example:
+
+```ts
+type ReadonlyUser = Readonly<User>;
+```
+
+This ensures no property in `ReadonlyUser` can be reassigned.
+
+## Custom Transformations
+
+You can go beyond the built-ins by defining your own mapped types.
+
+For example, making all values `Promise`-wrapped:
+
+```ts
+type Asyncify<T> = {
+  [K in keyof T]: Promise<T[K]>;
+};
+
+type AsyncUser = Asyncify<User>;
+// { id: Promise<number>, name: Promise<string>, email: Promise<string> }
+```
+
+## Key Remapping (TypeScript 4.1+)
+
+Starting in TypeScript 4.1, you can remap keys:
+
+```ts
+type PrefixKeys<T, Prefix extends string> = {
+  [K in keyof T as `${Prefix}${Capitalize<string & K>}`]: T[K];
+};
+
+type PrefixedUser = PrefixKeys<User, "user">;
+// { userId: number, userName: string, userEmail: string }
+```
+
+This is powerful for building flexible, dynamic types.
+
+## When to Use Mapped Types
+
+Mapped types are great when you need to:
+
+- Create variations of a type (optional, readonly, async, etc.)
+- Derive new types from existing contracts
+- Keep your code DRY (don’t repeat yourself)
+
+## Final Thoughts
+
+Mapped types make TypeScript far more expressive.
+Instead of rewriting types, you can compose and transform them to fit your needs.
+
+If you haven’t already, explore the built-in helpers (`Partial`, `Readonly`, etc.), then try writing a few of your own.
+
+---
+
+[Mapped types in typescript](https://app.daily.dev/posts/mapped-types-in-typescript-when-you-need-to-tweak-a-type-without-rewriting-it-phdel3hbe) by Anatoly Nevzorov
