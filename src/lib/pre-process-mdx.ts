@@ -10,6 +10,22 @@ const preProcessMDX = (source: string) => {
       TypeScript: "https://www.typescriptlang.org",
       BetterPrompt: "https://betterprompt.me",
       SavvyMoney: "https://savvy.vn",
+      Tuvitaichinh: {
+        link: "https://tuvitaichinh.com",
+        imageUrl: "https://tuvitaichinh.com/favicon.ico",
+      },
+      "locson me": {
+        link: "https://locson-me.vercel.app",
+        imageUrl: "https://locson-me.vercel.app/logo.svg",
+      },
+      "Notion ai personal": {
+        link: "https://notion-ai-personal.vercel.app",
+        imageUrl: "https://notion-ai-personal.vercel.app/icon.png",
+      },
+      "Bookstore Demo": {
+        link: "https://bookstore-fe-three.vercel.app/",
+        imageUrl: "https://bookstore-fe-three.vercel.app/books-logo.svg",
+      },
     },
   });
 };
