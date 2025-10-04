@@ -1,16 +1,17 @@
 import { Metadata } from "next";
 
+import { getPostsFrontmatter } from "@/lib/file-service";
 import getBaseUrl from "@/lib/get-base-url";
-import { compileMDX, getPostsFrontmatter } from "@/lib/mdx";
+import mdxCompile from "@/lib/mdx-compile";
 
 import ListPosts from "@/components/ListPosts";
 import PostWrapper from "@/components/PostWrapper";
 
 async function PostsPage() {
-  const { code, frontmatter } = await compileMDX("/posts/index");
+  const { content, frontmatter } = await mdxCompile("/posts/index");
   const items = getPostsFrontmatter();
   return (
-    <PostWrapper frontmatter={frontmatter} code={code}>
+    <PostWrapper frontmatter={frontmatter} code={content}>
       <ListPosts items={items} />
     </PostWrapper>
   );
