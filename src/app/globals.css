@@ -349,4 +349,50 @@
     transform-origin: center;
     animation-delay: 0s;
   }
+
+  .glass-card {
+    --border-width: 1px;
+    border-radius: 1rem;
+    position: relative;
+    isolation: isolate;
+    background-color: oklch(92.2% 0 0 / 0.2);
+    @apply backdrop-blur-md;
+
+    @variant dark {
+      background-color: oklch(70.5% 0.015 286.067 / 0.1);
+    }
+  }
+  .glass-card::before {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    border-radius: inherit;
+    border: var(--border-width) solid oklch(27.4% 0.006 247.858 / 0.02);
+
+    background: linear-gradient(
+        to bottom right,
+        oklch(14.7% 0.004 49.25 / 0.1),
+        transparent,
+        transparent,
+        oklch(27.4% 0.006 247.858 / 0.2)
+      )
+      border-box;
+
+    mask:
+      linear-gradient(black, black) border-box,
+      linear-gradient(black, black) padding-box;
+    @apply mask-subtract;
+  }
+
+  .dark .glass-card::before {
+    background: linear-gradient(
+        to bottom right,
+        oklch(98.5% 0 0 / 0.4),
+        transparent,
+        transparent,
+        oklch(98.5% 0 0 / 0.3)
+      )
+      border-box;
+  }
 }
