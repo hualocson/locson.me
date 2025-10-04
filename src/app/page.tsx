@@ -1,8 +1,8 @@
-import { compileMDX } from "@/lib/mdx";
+import mdxCompile from "@/lib/mdx-compile";
 
 import PostWrapper from "@/components/PostWrapper";
 
 export default async function Home() {
-  const { code, frontmatter } = await compileMDX("index");
-  return <PostWrapper frontmatter={frontmatter} code={code} />;
+  const { content, frontmatter } = await mdxCompile("index");
+  return <PostWrapper frontmatter={frontmatter} code={content} />;
 }
