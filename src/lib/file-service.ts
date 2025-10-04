@@ -19,6 +19,7 @@ export const getPostFrontmatter = (slug: string): IPostFrontmatter => {
   return {
     path: `${slug}`,
     title: data.title,
+    display: data.display,
     place: data.place,
     date: data.date,
     lang: data.lang,
