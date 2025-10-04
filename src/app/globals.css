@@ -280,7 +280,7 @@
   }
 
   html:not(.dark) .shiki {
-    background-color: #fafafa !important;
+    background-color: #fdf6f0 !important;
   }
 
   html:not(.dark) .shiki,
