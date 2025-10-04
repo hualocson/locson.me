@@ -9,7 +9,7 @@ import formatDate from "@/lib/format-date";
 import { cn } from "@/lib/utils";
 
 import ArtBackground from "./ArtBackground";
-import { MDXRenderer } from "./markdown/MDXRenderer";
+import MDXRenderer from "./markdown/MDXRenderer";
 
 interface PostWrapperProps {
   frontmatter: Frontmatter;
