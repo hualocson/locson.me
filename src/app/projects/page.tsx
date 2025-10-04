@@ -7,7 +7,6 @@ import PostWrapper from "@/components/PostWrapper";
 
 async function ProjectsPage() {
   const { content, frontmatter } = await mdxCompile("projects");
-  console.log({ frontmatter });
   return <PostWrapper frontmatter={frontmatter} code={content} />;
 }
 
