@@ -14,7 +14,7 @@ const Header = () => {
   return (
     <header className="z-40">
       <Link
-        className="absolute m-5 flex h-12 w-12 items-center justify-center outline-none select-none xl:fixed"
+        className="absolute m-5 flex h-12 w-12 items-center justify-center p-2 outline-none select-none xl:fixed"
         href={"/"}
       >
         <NewLogo />
