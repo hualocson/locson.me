@@ -1,56 +1,31 @@
 "use client";
 
 import * as React from "react";
+import * as runtime from "react/jsx-runtime";
 
-import Link from "next/link";
+import { useMDXComponents } from "@/mdx-components";
+import { run } from "@mdx-js/mdx";
+import { MDXModule } from "mdx/types";
 
-import { cn } from "@/lib/utils";
-import { MDXProvider, useMDXComponents } from "@mdx-js/react";
-import { getMDXComponent } from "mdx-bundler/client";
+function MDXRenderer({ code }: { code: string }) {
+  const [mdxModule, setMdxModule] = React.useState<MDXModule>();
+  const Component = mdxModule ? mdxModule.default : React.Fragment;
 
-import ListProjects from "../ListProjects";
-import SubNav from "../SubNav";
-import MagicLink from "./MagicLink";
-
-type LinkProps = React.AnchorHTMLAttributes<HTMLAnchorElement>;
-
-const MDX_GLOBAL_CONFIG = {
-  MdxJsReact: {
-    useMDXComponents,
-  },
-};
-
-export function MDXRenderer({ code }: { code: string }) {
-  const Component = React.useMemo(
-    () => getMDXComponent(code, MDX_GLOBAL_CONFIG),
-    [code, MDX_GLOBAL_CONFIG]
+  React.useEffect(
+    function () {
+      (async function () {
+        setMdxModule(
+          await run(code, {
+            ...runtime,
+            baseUrl: import.meta.url,
+            useMDXComponents,
+          })
+        );
+      })();
+    },
+    [code]
   );
 
-  return (
-    <MDXProvider
-      components={{
-        MagicLink,
-        SubNav,
-        ListProjects,
-        a: (props: LinkProps) => {
-          const { href, ...rest } = props;
-          if (!href) {
-            return <a {...props} />;
-          }
-          return <Link href={href} {...rest} />;
-        },
-        img: ({ className, ...props }) => (
-          <img
-            className={cn(
-              className,
-              "mx-0 my-[2.6em] w-full scale-105 rounded-lg shadow"
-            )}
-            {...props}
-          />
-        ),
-      }}
-    >
-      <Component />
-    </MDXProvider>
-  );
+  return <Component />;
 }
+export default MDXRenderer;
