@@ -1,13 +1,13 @@
 import { Metadata } from "next";
 
 import getBaseUrl from "@/lib/get-base-url";
-import { compileMDX } from "@/lib/mdx";
+import mdxCompile from "@/lib/mdx-compile";
 
 import PostWrapper from "@/components/PostWrapper";
 
 async function ProjectsPage() {
-  const { code, frontmatter } = await compileMDX("projects");
-  return <PostWrapper frontmatter={frontmatter} code={code} />;
+  const { content, frontmatter } = await mdxCompile("projects");
+  return <PostWrapper frontmatter={frontmatter} code={content} />;
 }
 
 export default ProjectsPage;
