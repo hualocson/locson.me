@@ -27,4 +27,6 @@ interface IPostFrontmatter {
   redirect?: string; // external link
   toc?: boolean; // show toc
   tocAlwaysOn?: boolean; // show toc always on (use when have toc = true)
+  wrapperClass?: string;
+  art: "plum" | "dots" | "random";
 }
