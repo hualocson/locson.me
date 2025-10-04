@@ -61,7 +61,7 @@ export default function Navbar() {
         {mounted ? (
           <ToggleThemeButton />
         ) : (
-          <span className="bg-muted/60 inline-flex size-4 rounded" />
+          <span className="bg-muted/60 inline-flex size-8 rounded" />
         )}
       </div>
     </nav>
