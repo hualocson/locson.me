@@ -34,10 +34,13 @@ const ListProjects: React.FC = () => {
       </div>
 
       {/* list projects (empty state) */}
-      <div className="prose flex flex-col gap-4">
-        <div className="flex flex-col gap-2">
-          <h5 className="">No projects found</h5>
-          <p>{`I haven't created any projects yet.`}</p>
+      <div className="prose relative flex flex-col gap-4 perspective-distant">
+        <span className="glass-card absolute inset-0 z-0" />
+
+        <div className="relative z-10 flex flex-col gap-2 p-4">
+          <h5 className="text-sm text-shadow-sm md:text-base">
+            No projects found
+          </h5>
         </div>
       </div>
     </div>
