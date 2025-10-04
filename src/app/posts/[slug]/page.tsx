@@ -1,10 +1,12 @@
+import { getPostFrontmatter, getPostsSlugs } from "@/lib/file-service";
 import getBaseUrl from "@/lib/get-base-url";
-import { compileMDX, getPostFrontmatter, getPostsSlugs } from "@/lib/mdx";
+import mdxCompile from "@/lib/mdx-compile";
 
 import PostWrapper from "@/components/PostWrapper";
 
 export function generateStaticParams() {
   const posts = getPostsSlugs();
+
   return posts.map((post) => ({
     id: String(post),
   }));
@@ -18,7 +20,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const post = getPostFrontmatter(slug);
+  const post = getPostFrontmatter(`/posts/${slug}`);
   if (!post) {
     return;
   }
@@ -52,8 +54,8 @@ export async function generateMetadata({
 const PostPage = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug } = await params;
 
-  const { code, frontmatter } = await compileMDX(`/posts/${slug}`);
-  return <PostWrapper frontmatter={frontmatter} code={code} />;
+  const { content, frontmatter } = await mdxCompile(`/posts/${slug}`);
+  return <PostWrapper frontmatter={frontmatter} code={content} />;
 };
 
 export default PostPage;
