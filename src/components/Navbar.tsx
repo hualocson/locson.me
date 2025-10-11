@@ -22,7 +22,7 @@ export default function Navbar() {
         {/* Navigation Links */}
         <Link
           href="/posts"
-          className="text-muted-foreground hover:text-foreground flex items-center justify-center font-medium transition-colors duration-200"
+          className="text-muted-foreground hover:text-foreground md:bg-background flex items-center justify-center font-medium transition-colors duration-200 md:rounded-full md:px-2"
         >
           <span className="hidden md:inline-block">Blog</span>
           <span className="glass-card active:text-foreground flex size-8 items-center justify-center transition-all duration-150 active:scale-[0.96] md:hidden">
@@ -31,7 +31,7 @@ export default function Navbar() {
         </Link>
         <Link
           href="/projects"
-          className="text-muted-foreground hover:text-foreground flex items-center justify-center font-medium transition-colors duration-200"
+          className="text-muted-foreground hover:text-foreground md:bg-background flex items-center justify-center font-medium transition-colors duration-200 md:rounded-full md:px-2"
         >
           <span className="hidden md:inline-block">Projects</span>
           <span className="glass-card active:text-foreground flex size-8 items-center justify-center transition-all duration-150 active:scale-[0.96] md:hidden">
