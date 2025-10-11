@@ -22,7 +22,7 @@ const ListProjects: React.FC = () => {
             GitHub
           </Link>
           <Link
-            href="https://releases.antfu.me"
+            href="#"
             target="_blank"
             className="group inline-flex items-center gap-2 rounded-md border border-gray-400/30 px-2.5 py-1 opacity-50 transition-all duration-300 ease-in-out hover:border-amber-300 hover:bg-amber-300/10 hover:text-amber-300 hover:opacity-100 hover:[&>svg]:fill-current hover:[&>svg]:stroke-current"
           >
@@ -35,9 +35,7 @@ const ListProjects: React.FC = () => {
 
       {/* list projects (empty state) */}
       <div className="prose relative flex flex-col gap-4 perspective-distant">
-        <span className="glass-card absolute inset-0 z-0" />
-
-        <div className="relative z-10 flex flex-col gap-2 p-4">
+        <div className="glass-card relative z-10 flex flex-col gap-2 p-4 backdrop-blur-3xl">
           <h5 className="text-sm text-shadow-sm md:text-base">
             No projects found
           </h5>
