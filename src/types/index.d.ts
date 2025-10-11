@@ -16,6 +16,7 @@ interface Frontmatter {
 
 interface IPostFrontmatter {
   path: string; // slug
+  filePath?: string; // file path
   title: string;
   display?: string;
   place?: string;
