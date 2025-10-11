@@ -54,12 +54,11 @@ export default function RootLayout({
       >
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
-          enableSystem
+          defaultTheme="dark"
           disableTransitionOnChange
         >
           <Header />
-          <main className="overflow-x-hidden px-7 py-10">
+          <main className="mt-16 overflow-x-hidden px-7 py-10">
             <ArtBackground />
             {children}
             <Footer />
