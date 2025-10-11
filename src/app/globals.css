@@ -144,6 +144,36 @@
     @apply bg-background text-foreground font-sans;
   }
 
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 12px;
+    @apply selection:bg-indigo-400/30;
+
+    @variant dark {
+      @apply selection:bg-indigo-600/30;
+    }
+  }
+
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
+  }
+
+  @media (max-width: 768px) {
+    html {
+      scroll-padding-top: 64px;
+    }
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    @apply cursor-pointer;
+  }
+  dialog {
+    @apply m-auto;
+  }
+
   * {
     scrollbar-color: var(--scrollbar) var(--background);
   }
@@ -356,7 +386,7 @@
     position: relative;
     isolation: isolate;
     background-color: oklch(92.2% 0 0 / 0.2);
-    @apply backdrop-blur-md;
+    @apply saturate-[80%] backdrop-blur-md;
 
     @variant dark {
       background-color: oklch(70.5% 0.015 286.067 / 0.1);
