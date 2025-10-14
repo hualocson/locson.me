@@ -1,0 +1,86 @@
+{
+  "app": "Terminal",
+  "icon": "Terminal",
+  "description": "Terminal and shell shortcuts",
+  "shortcuts": [
+    {
+      "keys": [
+        "Ctrl",
+        "C"
+      ],
+      "description": "Cancel current command",
+      "category": "Control"
+    },
+    {
+      "keys": [
+        "Ctrl",
+        "D"
+      ],
+      "description": "Exit terminal",
+      "category": "Control"
+    },
+    {
+      "keys": [
+        "Ctrl",
+        "L"
+      ],
+      "description": "Clear screen",
+      "category": "Display"
+    },
+    {
+      "keys": [
+        "Ctrl",
+        "R"
+      ],
+      "description": "Search command history",
+      "category": "History"
+    },
+    {
+      "keys": [
+        "Ctrl",
+        "A"
+      ],
+      "description": "Move to beginning of line",
+      "category": "Navigation"
+    },
+    {
+      "keys": [
+        "Ctrl",
+        "E"
+      ],
+      "description": "Move to end of line",
+      "category": "Navigation"
+    },
+    {
+      "keys": [
+        "Ctrl",
+        "U"
+      ],
+      "description": "Clear line before cursor",
+      "category": "Editing"
+    },
+    {
+      "keys": [
+        "Ctrl",
+        "K"
+      ],
+      "description": "Clear line after cursor",
+      "category": "Editing"
+    },
+    {
+      "keys": [
+        "Ctrl",
+        "W"
+      ],
+      "description": "Delete word before cursor",
+      "category": "Editing"
+    },
+    {
+      "keys": [
+        "Tab"
+      ],
+      "description": "Auto-complete",
+      "category": "Editing"
+    }
+  ]
+}

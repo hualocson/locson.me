@@ -1,0 +1,91 @@
+{
+  "app": "macOS",
+  "icon": "Apple",
+  "description": "macOS system shortcuts",
+  "shortcuts": [
+    {
+      "keys": [
+        "Cmd",
+        "Space"
+      ],
+      "description": "Spotlight search",
+      "category": "System"
+    },
+    {
+      "keys": [
+        "Cmd",
+        "Tab"
+      ],
+      "description": "Switch applications",
+      "category": "Window Management"
+    },
+    {
+      "keys": [
+        "Cmd",
+        "`"
+      ],
+      "description": "Switch windows",
+      "category": "Window Management"
+    },
+    {
+      "keys": [
+        "Cmd",
+        "Q"
+      ],
+      "description": "Quit application",
+      "category": "Application"
+    },
+    {
+      "keys": [
+        "Cmd",
+        "H"
+      ],
+      "description": "Hide application",
+      "category": "Application"
+    },
+    {
+      "keys": [
+        "Cmd",
+        "M"
+      ],
+      "description": "Minimize window",
+      "category": "Window Management"
+    },
+    {
+      "keys": [
+        "Cmd",
+        "Shift",
+        "3"
+      ],
+      "description": "Screenshot entire screen",
+      "category": "Screenshots"
+    },
+    {
+      "keys": [
+        "Cmd",
+        "Shift",
+        "4"
+      ],
+      "description": "Screenshot selection",
+      "category": "Screenshots"
+    },
+    {
+      "keys": [
+        "Cmd",
+        "Shift",
+        "5"
+      ],
+      "description": "Screenshot & recording options",
+      "category": "Screenshots"
+    },
+    {
+      "keys": [
+        "Ctrl",
+        "Cmd",
+        "Q"
+      ],
+      "description": "Lock screen",
+      "category": "System"
+    }
+  ]
+}
