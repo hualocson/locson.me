@@ -90,7 +90,8 @@ export default {
             },
 
             ".shiki": {
-              fontFamily: "'DM Mono', 'Input Mono', 'Fira Code', monospace",
+              fontFamily:
+                "var(--font-mono),'DM Mono', 'Input Mono', 'Fira Code', monospace",
               fontSize: "0.92em",
               lineHeight: "1.4",
               margin: "0.5em 0",
