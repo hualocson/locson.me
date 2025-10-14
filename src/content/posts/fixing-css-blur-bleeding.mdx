@@ -1,0 +1,109 @@
+---
+title: "Fixing the Bleeding Blur Problem in CSS"
+slug: "fixing-css-blur-bleeding"
+description: "Exploring why filter: blur() bleeds light at the edges, and how SVG filters or backdrop-filter can produce cleaner, more controllable blur effects."
+date: "2025-10-14"
+duration: 5min
+toc: true
+---
+
+![Cover image for Fixing the Bleeding Blur](/images/how-to-add-keyboard-shortcut-in-react-app-cover.png)
+
+It’s always bothered me that `filter: blur()` lets light bleed past the edges. I started experimenting to see if there was a cleaner way to blur without that glow. Here’s what I found.
+
+---
+
+## The Problem
+
+When you apply a blur in CSS like this:
+
+```css
+.element {
+  filter: blur(10px);
+}
+```
+
+You’ll notice that the edges glow or bleed — the blurred pixels extend beyond the element’s box.
+That’s fine for photos, but not ideal for UI elements where you want clean borders or rounded corners.
+
+Example: a frosted glass card that suddenly looks like it’s glowing around the edges.
+
+## Experiment 1 — Regular CSS Blur
+
+Using `filter: blur()` directly is the simplest approach, but it doesn’t respect the element’s boundaries.
+
+Result: Smooth blur, but unwanted light bleeding.
+
+## Experiment 2 — Backdrop Filter via Pseudo-element
+
+What if we blur the background behind the element instead?
+
+```css
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(10px);
+  border-radius: inherit;
+}
+```
+
+This creates a frosted-glass effect that feels more natural, since it blurs the background rather than the element itself.
+
+> Problem: In Chrome and Safari, backdrop-filter can break the border-radius or behave inconsistently during transitions.
+
+## Experiment 3 — SVG Filter (More Control)
+
+SVG filters give you fine-grained control over how blur works.
+Here’s an example using feGaussianBlur with feComponentTransfer:
+
+Then apply it in CSS:
+
+```css
+.element {
+  filter: url(#blur);
+}
+```
+
+**Pros:**
+
+- Better edge control.
+- Avoids the excessive light bleed.
+
+**Cons:**
+
+- Can introduce banding artifacts — visible “steps” in the gradient instead of a smooth blur.
+
+## Animating Blur
+
+I’m predicting blur will become a common animation trend for entrance and exit transitions — think smooth fade-ins with soft motion blur.
+
+**SVG Animation (Smooth)**
+
+SVG supports animations directly with SMIL:
+
+```tsx
+<animate attributeName="stdDeviation" from="0" to="10" dur="0.3s" />
+```
+
+It runs smoothly and gives a cinematic feel.
+
+**CSS Backdrop Animation (Buggy)**
+
+Chrome still has issues animating backdrop-filter, resulting in janky or incomplete transitions.
+It might work better in Safari, but it’s not reliable across browsers yet.
+
+## Takeaway
+
+- `filter: blur()` is easy but bleeds light.
+- `backdrop-filter` looks good for glass effects but has browser quirks.
+
+- SVG filters offer full control — great for precise design or animation, though not perfect.
+
+For now, SVG filters are the most consistent way to achieve a clean, controlled blur without glowing edges — especially if you plan to animate it.
+
+## Further Reading
+
+- [MDN: CSS filter property](https://developer.mozilla.org/en-US/docs/Web/CSS/filter)
+- [MDN: SVG filter effects](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/filter)
+- [Backdrop Filter on CSS-Tricks](https://css-tricks.com/almanac/properties/b/backdrop-filter/)

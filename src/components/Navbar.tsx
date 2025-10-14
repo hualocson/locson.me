@@ -4,7 +4,13 @@ import { useEffect, useState } from "react";
 
 import Link from "next/link";
 
-import { Github, LightbulbIcon, Mail, NotebookPenIcon } from "lucide-react";
+import {
+  Github,
+  Keyboard,
+  LightbulbIcon,
+  Mail,
+  NotebookPenIcon,
+} from "lucide-react";
 
 import ToggleThemeButton from "./ToggleThemeButton";
 
@@ -36,6 +42,15 @@ export default function Navbar() {
           <span className="hidden md:inline-block">Projects</span>
           <span className="glass-card active:text-foreground flex size-8 items-center justify-center transition-all duration-150 active:scale-[0.96] md:hidden">
             <LightbulbIcon className="size-4" />
+          </span>
+        </Link>
+        <Link
+          href="/shortcuts"
+          className="text-muted-foreground hover:text-foreground md:bg-background flex items-center justify-center font-medium transition-colors duration-200 md:rounded-full md:px-2"
+        >
+          <span className="hidden md:inline-block">Shortcuts</span>
+          <span className="glass-card active:text-foreground flex size-8 items-center justify-center transition-all duration-150 active:scale-[0.96] md:hidden">
+            <Keyboard className="size-4" />
           </span>
         </Link>
 

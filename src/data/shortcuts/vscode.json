@@ -1,0 +1,92 @@
+{
+  "app": "VSCode",
+  "icon": "Code",
+  "description": "Visual Studio Code editor shortcuts",
+  "shortcuts": [
+    {
+      "keys": [
+        "Cmd",
+        "P"
+      ],
+      "description": "Quick open file",
+      "category": "Navigation"
+    },
+    {
+      "keys": [
+        "Cmd",
+        "Shift",
+        "P"
+      ],
+      "description": "Command palette",
+      "category": "Navigation"
+    },
+    {
+      "keys": [
+        "Cmd",
+        "B"
+      ],
+      "description": "Toggle sidebar",
+      "category": "UI"
+    },
+    {
+      "keys": [
+        "Cmd",
+        "J"
+      ],
+      "description": "Toggle panel",
+      "category": "UI"
+    },
+    {
+      "keys": [
+        "Cmd",
+        "D"
+      ],
+      "description": "Add selection to next find match",
+      "category": "Editing"
+    },
+    {
+      "keys": [
+        "Cmd",
+        "Shift",
+        "L"
+      ],
+      "description": "Select all occurrences",
+      "category": "Editing"
+    },
+    {
+      "keys": [
+        "Cmd",
+        "/"
+      ],
+      "description": "Toggle comment",
+      "category": "Editing"
+    },
+    {
+      "keys": [
+        "Alt",
+        "↑/↓"
+      ],
+      "description": "Move line up/down",
+      "category": "Editing"
+    },
+    {
+      "keys": [
+        "Shift",
+        "Alt",
+        "↑/↓"
+      ],
+      "description": "Copy line up/down",
+      "category": "Editing"
+    },
+    {
+      "keys": [
+        "Cmd",
+        "K",
+        "Cmd",
+        "S"
+      ],
+      "description": "Keyboard shortcuts reference",
+      "category": "Help"
+    }
+  ]
+}
