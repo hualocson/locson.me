@@ -9,6 +9,7 @@ import formatDate from "@/lib/format-date";
 import { cn } from "@/lib/utils";
 
 import ArtBackground from "./ArtBackground";
+import BlurComponent from "./BlurComponent";
 import MDXRenderer from "./markdown/MDXRenderer";
 
 interface PostWrapperProps {
@@ -31,6 +32,7 @@ const PostWrapper: FC<PropsWithChildren<PostWrapperProps>> = ({
 
   return (
     <>
+      <BlurComponent />
       {/* Art Component */}
       {mounted && (
         <div className="pointer-events-none fixed inset-0 -z-10">
