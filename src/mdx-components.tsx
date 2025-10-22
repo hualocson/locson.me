@@ -21,7 +21,7 @@ const components = {
     return <Link href={href} {...rest} />;
   },
   img: ({ className, ...props }) => (
-    <div className="relative rounded-xl">
+    <span className="relative rounded-xl">
       <img
         className={cn(
           className,
@@ -29,8 +29,8 @@ const components = {
         )}
         {...props}
       />
-      <div className="pointer-events-none absolute inset-0 scale-105 rounded-[inherit] ring-1 ring-black/10 ring-inset dark:ring-white/10" />
-    </div>
+      <span className="pointer-events-none absolute inset-0 scale-105 rounded-[inherit] ring-1 ring-black/10 ring-inset dark:ring-white/10" />
+    </span>
   ),
 } satisfies MDXComponents;
 
