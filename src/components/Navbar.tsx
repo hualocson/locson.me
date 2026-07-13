@@ -6,7 +6,6 @@ import Link from "next/link";
 
 import {
   Github,
-  Keyboard,
   LightbulbIcon,
   Mail,
   NotebookPenIcon,
@@ -44,16 +43,6 @@ export default function Navbar() {
             <LightbulbIcon className="size-4" />
           </span>
         </Link>
-        <Link
-          href="/shortcuts"
-          className="text-muted-foreground hover:text-foreground md:bg-background flex items-center justify-center font-medium transition-colors duration-200 md:rounded-full md:px-2"
-        >
-          <span className="hidden md:inline-block">Shortcuts</span>
-          <span className="glass-card active:text-foreground flex size-8 items-center justify-center transition-all duration-150 active:scale-[0.96] md:hidden">
-            <Keyboard className="size-4" />
-          </span>
-        </Link>
-
         <div className="glass-card grid grid-flow-col place-items-center gap-1 px-2 [&_a]:relative">
           {/* Mail Icon */}
           <Link
