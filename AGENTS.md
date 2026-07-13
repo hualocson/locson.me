@@ -96,7 +96,7 @@ src/
 ├── app/           # Next.js App Router pages + API routes
 ├── components/    # React components (Header, Navbar, ArtBackground, etc.)
 ├── content/       # MDX files (pages + blog posts)
-├── data/          # Static JSON data (keyboard shortcuts)
+├── data/          # Static JSON data
 ├── lib/           # Utilities (MDX compile, file service, format-date, etc.)
 ├── scripts/       # Build-time scripts (posts index)
 └── types/         # TypeScript type definitions
