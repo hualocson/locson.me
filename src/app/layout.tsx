@@ -7,8 +7,6 @@ import ArtBackground from "@/components/ArtBackground";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { ThemeProvider } from "@/components/ThemeProvider";
-import CmdK from "@/components/cmdk";
-
 import "./globals.css";
 
 const fontSans = Inter({
@@ -64,8 +62,6 @@ export default function RootLayout({
             {children}
             <Footer />
           </main>
-
-          <CmdK />
         </ThemeProvider>
       </body>
     </html>
