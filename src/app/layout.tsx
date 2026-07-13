@@ -1,24 +1,23 @@
 import type { Metadata } from "next";
-import { Inter, Roboto_Condensed } from "next/font/google";
+import { JetBrains_Mono } from "next/font/google";
 
+import { satoshi } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
 
 import ArtBackground from "@/components/ArtBackground";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { ThemeProvider } from "@/components/ThemeProvider";
-import CmdK from "@/components/cmdk";
 
 import "./globals.css";
 
-const fontSans = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-});
+const fontSans = satoshi;
 
-const robotoCondensed = Roboto_Condensed({
-  variable: "--font-roboto-condensed",
+const robotoCondensed = JetBrains_Mono({
+  variable: "--font-mono",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -64,8 +63,6 @@ export default function RootLayout({
             {children}
             <Footer />
           </main>
-
-          <CmdK />
         </ThemeProvider>
       </body>
     </html>
