@@ -9,11 +9,6 @@ const preProcessMDX = (source: string) => {
       React: "https://react.dev",
       TypeScript: "https://www.typescriptlang.org",
       BetterPrompt: "https://betterprompt.me",
-      SavvyMoney: "https://savvy.vn",
-      Tuvitaichinh: {
-        link: "https://tuvitaichinh.com",
-        imageUrl: "https://tuvitaichinh.com/favicon.ico",
-      },
       "locson me": {
         link: "https://locson-me.vercel.app",
         imageUrl: "https://locson-me.vercel.app/logo.svg",

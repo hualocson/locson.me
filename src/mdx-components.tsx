@@ -2,9 +2,10 @@ import Link from "next/link";
 
 import type { MDXComponents } from "mdx/types";
 
-import ListProjects from "./components/ListProjects";
-import SubNav from "./components/SubNav";
-import MagicLink from "./components/markdown/MagicLink";
+import ListProjects from "./components/markdown/components/ListProjects";
+import MagicLink from "./components/markdown/components/MagicLink";
+import SubNav from "./components/markdown/components/SubNav";
+import YearExperience from "./components/markdown/components/YearExperience";
 import { cn } from "./lib/utils";
 
 type LinkProps = React.AnchorHTMLAttributes<HTMLAnchorElement>;
@@ -13,6 +14,7 @@ const components = {
   MagicLink,
   SubNav,
   ListProjects,
+  YearExperience,
   a: (props: LinkProps) => {
     const { href, ...rest } = props;
     if (!href) {
