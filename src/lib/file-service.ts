@@ -29,9 +29,12 @@ export const getPostFrontmatter = (slug: string): IPostFrontmatter => {
     redirect: data.redirect,
     inperson: data.inperson,
     wrapperClass: data.wrapperClass,
+    bodyClass: data.bodyClass,
     art: data.art,
     toc: data.toc,
     tocAlwaysOn: data.tocAlwaysOn,
+    fixedScreen: !!data.fixedScreen,
+    fullWidth: !!data.fullWidth,
   };
 };
 

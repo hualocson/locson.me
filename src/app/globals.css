@@ -225,6 +225,16 @@
     scrollbar-width: thin;
   }
 
+  .hide-scrollbar-x {
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    &::-webkit-scrollbar:horizontal {
+      display: none;
+    }
+  }
+
   .prose {
     @apply text-(--fg);
   }

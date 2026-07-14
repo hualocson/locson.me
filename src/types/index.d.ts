@@ -9,8 +9,10 @@ interface Frontmatter {
   draft?: boolean;
   lang?: string;
   wrapperClass?: string;
-  class?: string;
+  bodyClass?: string;
   tocAlwaysOn?: boolean;
+  fixedScreen?: boolean;
+  fullWidth?: boolean;
   art?: "plum" | "dots" | "random";
 }
 
@@ -30,5 +32,8 @@ interface IPostFrontmatter {
   toc?: boolean; // show toc
   tocAlwaysOn?: boolean; // show toc always on (use when have toc = true)
   wrapperClass?: string;
+  bodyClass?: string;
+  fixedScreen?: boolean;
+  fullWidth?: boolean;
   art: "plum" | "dots" | "random";
 }

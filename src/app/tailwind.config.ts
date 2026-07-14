@@ -7,7 +7,7 @@ export default {
       typography: {
         DEFAULT: {
           css: {
-            maxWidth: "65ch",
+            maxWidth: "75ch",
             color: "var(--fg)",
 
             a: {

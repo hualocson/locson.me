@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, PropsWithChildren, useEffect, useState } from "react";
+import React, { FC, PropsWithChildren, useEffect, useState } from "react";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -31,7 +31,7 @@ const PostWrapper: FC<PropsWithChildren<PostWrapperProps>> = ({
   const parentPath = pathname.split("/").slice(0, -1).join("/") || "/";
 
   return (
-    <>
+    <div className={cn(!frontmatter.fullWidth && "px-7")}>
       <BlurComponent />
       {/* Art Component */}
       {mounted && (
@@ -84,8 +84,28 @@ const PostWrapper: FC<PropsWithChildren<PostWrapperProps>> = ({
       )}
 
       {/* Article Content */}
-      <article className={cn(frontmatter.class)}>
-        <div className="prose slide-enter-content m-auto">
+      <article
+        style={
+          {
+            "--main-padding": "4rem",
+            "--footer": "85px",
+            "--page-header": !!(frontmatter.display ?? frontmatter.title)
+              ? "96px"
+              : 0,
+            "--page-footer-nav": pathname !== "/" ? "20px" : 0,
+          } as React.CSSProperties
+        }
+        className={cn(
+          frontmatter.fixedScreen &&
+            "md:h-[calc(100svh-var(--footer)-var(--page-header)-var(--page-footer-nav)-var(--main-padding))]"
+        )}
+      >
+        <div
+          className={cn(
+            "prose slide-enter-content m-auto",
+            frontmatter.bodyClass
+          )}
+        >
           <MDXRenderer code={code} />
           {children}
         </div>
@@ -93,14 +113,14 @@ const PostWrapper: FC<PropsWithChildren<PostWrapperProps>> = ({
 
       {/* Footer */}
       {pathname !== "/" && (
-        <div className="prose slide-enter-content mx-auto mt-8 mb-8 print:hidden">
+        <div className="prose slide-enter-content mx-auto mt-8 print:hidden">
           <span className="font-mono opacity-50">&gt; </span>
           <Link href={parentPath}>
             <span className="font-mono opacity-50 hover:opacity-75">cd ..</span>
           </Link>
         </div>
       )}
-    </>
+    </div>
   );
 };
 
