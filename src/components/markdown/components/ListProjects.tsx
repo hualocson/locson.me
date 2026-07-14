@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+
 import Lenis from "lenis";
 
 const ListProjects: React.FC = () => {
@@ -12,7 +13,7 @@ const ListProjects: React.FC = () => {
 
     const isDesktop = window.matchMedia("(min-width: 768px)").matches;
     const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
+      "(prefers-reduced-motion: reduce)"
     ).matches;
     if (!isDesktop || prefersReducedMotion) {
       return;
@@ -38,12 +39,12 @@ const ListProjects: React.FC = () => {
   return (
     <div
       ref={scrollRef}
-      className="hide-scrollbar-x mt-20 flex w-full items-center gap-4 overflow-x-auto"
+      className="hide-scrollbar-x mt-24 flex w-full items-center gap-4 overflow-x-auto"
     >
       {Array.from({ length: 10 }).map((_, index) => (
         <span
           key={index}
-          className="aspect-square w-40 flex-shrink-0 bg-gray-400 first:ml-7 last:mr-7"
+          className="aspect-square w-44 flex-shrink-0 bg-gray-400 first:ml-7 last:mr-7"
         ></span>
       ))}
     </div>

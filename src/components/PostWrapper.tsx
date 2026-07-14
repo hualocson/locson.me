@@ -31,7 +31,7 @@ const PostWrapper: FC<PropsWithChildren<PostWrapperProps>> = ({
   const parentPath = pathname.split("/").slice(0, -1).join("/") || "/";
 
   return (
-    <div className={cn(!frontmatter.fullWidth && "px-7")}>
+    <>
       <BlurComponent />
       {/* Art Component */}
       {mounted && (
@@ -42,7 +42,12 @@ const PostWrapper: FC<PropsWithChildren<PostWrapperProps>> = ({
 
       {/* Header */}
       {(frontmatter.display ?? frontmatter.title) && (
-        <div className={cn("prose mx-auto mb-8", frontmatter.wrapperClass)}>
+        <div
+          className={cn(
+            "prose slide-enter mx-auto mb-8",
+            frontmatter.wrapperClass
+          )}
+        >
           <h1 className="slide-enter-50">
             {frontmatter.display ?? frontmatter.title}
           </h1>
@@ -87,8 +92,8 @@ const PostWrapper: FC<PropsWithChildren<PostWrapperProps>> = ({
       <article
         style={
           {
-            "--main-padding": "4rem",
-            "--footer": "85px",
+            "--main-padding": "3rem",
+            "--footer": "70px",
             "--page-header": !!(frontmatter.display ?? frontmatter.title)
               ? "96px"
               : 0,
@@ -97,7 +102,8 @@ const PostWrapper: FC<PropsWithChildren<PostWrapperProps>> = ({
         }
         className={cn(
           frontmatter.fixedScreen &&
-            "md:h-[calc(100svh-var(--footer)-var(--page-header)-var(--page-footer-nav)-var(--main-padding))]"
+            "md:h-[calc(100svh-var(--footer)-var(--page-header)-var(--page-footer-nav)-var(--main-padding))]",
+          !frontmatter.fullWidth && "px-7"
         )}
       >
         <div
@@ -113,14 +119,16 @@ const PostWrapper: FC<PropsWithChildren<PostWrapperProps>> = ({
 
       {/* Footer */}
       {pathname !== "/" && (
-        <div className="prose slide-enter-content mx-auto mt-8 print:hidden">
+        <div
+          className={cn("prose slide-enter-content mx-auto mt-8 print:hidden")}
+        >
           <span className="font-mono opacity-50">&gt; </span>
           <Link href={parentPath}>
             <span className="font-mono opacity-50 hover:opacity-75">cd ..</span>
           </Link>
         </div>
       )}
-    </div>
+    </>
   );
 };
 

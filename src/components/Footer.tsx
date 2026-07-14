@@ -4,7 +4,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="prose slide-enter m-auto mt-10 mb-6 delay-[1200ms]">
+    <footer className="prose slide-enter m-auto my-6 delay-[1200ms]">
       <div className="text-muted-foreground flex items-center justify-between text-sm">
         <span>© {currentYear} Loc Son</span>
         <div className="flex items-center gap-4">
