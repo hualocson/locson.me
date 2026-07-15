@@ -91,7 +91,7 @@ const ProjectPageDetail = async ({
           </Button>
         </Link>
       </div>
-      <HorizontalScrollContainer className="hide-scrollbar-x fixed top-0 left-0 -z-10 flex h-svh w-svw items-stretch">
+      <HorizontalScrollContainer className="hide-scrollbar-x flex flex-col md:fixed md:top-0 md:left-0 md:-z-10 md:h-svh md:w-svw md:flex-row md:items-stretch md:overflow-x-auto">
         <ProjectInfo project={project} />
         <ProjectImage project={project} />
         <ProjectDesc desc={project.info.desc} />

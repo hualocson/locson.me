@@ -43,7 +43,7 @@ const PostWrapper: FC<PropsWithChildren<IPostWrapperProps>> = ({
       {(frontmatter.display ?? frontmatter.title) && (
         <div
           className={cn(
-            "prose slide-enter mx-auto mb-8",
+            "prose slide-enter mx-auto mb-8 px-7",
             frontmatter.wrapperClass
           )}
         >
@@ -100,9 +100,10 @@ const PostWrapper: FC<PropsWithChildren<IPostWrapperProps>> = ({
           } as React.CSSProperties
         }
         className={cn(
+          "px-7",
           frontmatter.fixedScreen &&
             "md:h-[calc(100svh-var(--footer)-var(--page-header)-var(--page-footer-nav)-var(--main-padding))]",
-          !frontmatter.fullWidth && "px-7"
+          !frontmatter.fullWidth && "md:px-0"
         )}
       >
         <div
@@ -115,7 +116,9 @@ const PostWrapper: FC<PropsWithChildren<IPostWrapperProps>> = ({
           {children}
         </div>
       </article>
-      {!frontmatter.hideFooter && <Footer />}
+      {!frontmatter.hideFooter && (
+        <Footer isFullWidth={frontmatter.fullWidth} />
+      )}
     </>
   );
 };

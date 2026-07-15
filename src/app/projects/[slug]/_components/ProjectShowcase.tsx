@@ -33,8 +33,9 @@ const FrameItem: FC<IFrameItemProps> = ({ frame, isFull = false }) => {
         } as React.CSSProperties
       }
       className={cn(
-        "relative flex flex-shrink-0 items-center justify-center",
-        isFull ? "h-svh w-svw" : "aspect-[var(--ratio)]"
+        "relative flex w-full flex-shrink-0 items-center justify-center md:w-auto",
+        "aspect-[var(--ratio)] last:mb-12 md:last:mb-0",
+        isFull && "w-full md:h-svh md:w-svw"
       )}
     >
       <Image

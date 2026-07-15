@@ -40,7 +40,7 @@ const ContentWrapper: FC<PropsWithChildren<IContentWrapper>> = ({
       {(frontmatter.display ?? frontmatter.title) && (
         <div
           className={cn(
-            "prose slide-enter mx-auto mb-8 mix-blend-exclusion invert-100",
+            "prose slide-enter mx-auto mb-8 px-7 mix-blend-exclusion invert-100",
             frontmatter.wrapperClass
           )}
         >
@@ -97,9 +97,10 @@ const ContentWrapper: FC<PropsWithChildren<IContentWrapper>> = ({
           } as React.CSSProperties
         }
         className={cn(
+          "px-7",
           frontmatter.fixedScreen &&
-            "md:h-[calc(100svh-var(--footer)-var(--page-header)-var(--page-footer-nav)-var(--main-padding))]",
-          !frontmatter.fullWidth && "px-7"
+            "px-4 md:h-[calc(100svh-var(--footer)-var(--page-header)-var(--page-footer-nav)-var(--main-padding))]",
+          frontmatter.fullWidth && "md:px-0"
         )}
       >
         <div
@@ -112,7 +113,9 @@ const ContentWrapper: FC<PropsWithChildren<IContentWrapper>> = ({
         </div>
       </article>
 
-      {!frontmatter.hideFooter && <Footer />}
+      {!frontmatter.hideFooter && (
+        <Footer isFullWidth={frontmatter.fullWidth} />
+      )}
     </>
   );
 };

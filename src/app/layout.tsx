@@ -58,7 +58,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Header />
-          <main className="overflow-x-hidden pt-8">
+          <main className="mt-12 overflow-x-hidden pt-8 md:mt-0">
             <ArtBackground />
             {children}
           </main>

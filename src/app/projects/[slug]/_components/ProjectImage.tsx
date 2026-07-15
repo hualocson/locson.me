@@ -10,15 +10,22 @@ interface IProjectImageProps {
 
 const ProjectImage: React.FC<IProjectImageProps> = ({ project }) => {
   return (
-    <div className="relative w-[50svw] flex-shrink-0">
+    <div
+      className="relative aspect-[var(--ratio)] w-full flex-shrink-0 md:aspect-auto md:w-[50svw]"
+      style={
+        {
+          "--ratio": project.images.hero.ratio,
+        } as React.CSSProperties
+      }
+    >
       <Image
         src={project.images.hero.src}
         alt={project.images.hero.alt}
         fill
         className="my-0 object-cover"
-        sizes="50vw"
         priority
         quality={90}
+        sizes="(max-width: 768px) 100vw, 50vw"
       />
     </div>
   );
