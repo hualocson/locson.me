@@ -21,7 +21,7 @@ const ProjectsHeroSection: React.FC = () => {
       <div className="w-[60%] overflow-hidden py-[2.2vw]">
         <AnimatePresence mode="wait" initial={false}>
           <motion.p
-            className="my-0 text-6xl"
+            className="my-0 text-7xl"
             key={activeSlug ?? "default"}
             initial={{ opacity: 0, y: 100 }}
             animate={{ opacity: 1, y: 0 }}

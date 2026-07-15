@@ -35,10 +35,10 @@ export default function Navbar() {
         >
           <span className="hidden md:inline-block">Projects</span>
           <span className="glass-card active:text-foreground flex size-8 items-center justify-center transition-all duration-150 active:scale-[0.96] md:hidden">
-            <LightbulbIcon className="size-4 mix-blend-difference" />
+            <LightbulbIcon className="size-4" />
           </span>
         </Link>
-        <div className="glass-card grid grid-flow-col place-items-center gap-1 px-2 mix-blend-difference [&_a]:relative">
+        <div className="glass-card grid grid-flow-col place-items-center gap-1 px-2 [&_a]:relative">
           {/* Mail Icon */}
           <Link
             href="https://github.com/hualocson"
@@ -46,7 +46,7 @@ export default function Navbar() {
             aria-label="Github"
             title="Github"
           >
-            <Github className="size-4 mix-blend-difference" />
+            <Github className="size-4" />
           </Link>
           <Link
             href="mailto:hualocson@gmail.com"
@@ -54,7 +54,7 @@ export default function Navbar() {
             aria-label="Email"
             title="Email"
           >
-            <Mail className="size-4 mix-blend-difference" />
+            <Mail className="size-4" />
           </Link>
 
           {/* Theme Toggle */}

@@ -6,7 +6,7 @@ const Logo = () => {
       viewBox="0 0 512 524"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className="size-8 fill-[#303030] stroke-[#303030] dark:fill-[#fdfdfd] dark:stroke-[#fdfdfd]"
+      className="size-8 fill-[#1C1C1C] stroke-[#1c1c1c] dark:fill-[#fdfdfd] dark:stroke-[#fdfdfd]"
     >
       <mask
         id="mask0_2001_71"

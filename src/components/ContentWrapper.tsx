@@ -40,11 +40,11 @@ const ContentWrapper: FC<PropsWithChildren<IContentWrapper>> = ({
       {(frontmatter.display ?? frontmatter.title) && (
         <div
           className={cn(
-            "prose slide-enter mx-auto mb-8",
+            "prose slide-enter mx-auto mb-8 mix-blend-exclusion invert-100",
             frontmatter.wrapperClass
           )}
         >
-          <h1 className="slide-enter-50">
+          <h1 className="slide-enter-50 !text-[#1c1c1c]">
             {frontmatter.display ?? frontmatter.title}
           </h1>
 
