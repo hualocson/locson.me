@@ -97,16 +97,16 @@ const ContentWrapper: FC<PropsWithChildren<IContentWrapper>> = ({
           } as React.CSSProperties
         }
         className={cn(
-          "px-7",
           frontmatter.fixedScreen &&
-            "px-4 md:h-[calc(100svh-var(--footer)-var(--page-header)-var(--page-footer-nav)-var(--main-padding))]",
-          frontmatter.fullWidth && "md:px-0"
+            "px-4 md:h-[calc(100svh-var(--footer)-var(--page-header)-var(--page-footer-nav)-var(--main-padding))]"
         )}
       >
         <div
           className={cn(
-            "prose slide-enter-content m-auto",
-            frontmatter.bodyClass
+            "prose slide-enter-content m-auto px-7",
+            frontmatter.bodyClass,
+
+            frontmatter.fullWidth && "md:px-0"
           )}
         >
           {children}
