@@ -16,3 +16,20 @@ export const satoshi = localFont({
   variable: "--font-sans",
   display: "swap",
 });
+
+export const roxborough = localFont({
+  src: [
+    {
+      path: "../../public/fonts/roxborough/RoxboroughCF-Regular.otf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/roxborough/RoxboroughCF-Italic.otf",
+      weight: "400",
+      style: "italic",
+    },
+  ],
+  variable: "--font-roxborough",
+  display: "swap",
+});

@@ -65,9 +65,9 @@ function ToggleThemeButton() {
       title="Toggle Color Schema"
     >
       {theme === "light" ? (
-        <Sun className="size-4" />
+        <Sun className="size-4 mix-blend-difference" />
       ) : (
-        <Moon className="size-4" />
+        <Moon className="size-4 mix-blend-difference" />
       )}
     </button>
   );

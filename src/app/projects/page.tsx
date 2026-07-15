@@ -3,11 +3,16 @@ import { Metadata } from "next";
 import getBaseUrl from "@/lib/get-base-url";
 import mdxCompile from "@/lib/mdx-compile";
 
-import PostWrapper from "@/components/PostWrapper";
+import ContentWrapper from "@/components/ContentWrapper";
+import ProjectsPageBody from "@/components/markdown/components/ProjectsPageBody";
 
 async function ProjectsPage() {
-  const { content, frontmatter } = await mdxCompile("projects");
-  return <PostWrapper frontmatter={frontmatter} code={content} />;
+  const { frontmatter } = await mdxCompile("/projects/index");
+  return (
+    <ContentWrapper frontmatter={frontmatter}>
+      <ProjectsPageBody />
+    </ContentWrapper>
+  );
 }
 
 export default ProjectsPage;

@@ -1,8 +1,7 @@
 "use client";
 
-import { FC, PropsWithChildren, useEffect, useState } from "react";
+import React, { FC, PropsWithChildren, useEffect, useState } from "react";
 
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import formatDate from "@/lib/format-date";
@@ -10,16 +9,18 @@ import { cn } from "@/lib/utils";
 
 import ArtBackground from "./ArtBackground";
 import BlurComponent from "./BlurComponent";
+import Footer from "./Footer";
 import MDXRenderer from "./markdown/MDXRenderer";
 
-interface PostWrapperProps {
+interface IPostWrapperProps {
   frontmatter: Frontmatter;
   code: string;
 }
-const PostWrapper: FC<PropsWithChildren<PostWrapperProps>> = ({
+
+const PostWrapper: FC<PropsWithChildren<IPostWrapperProps>> = ({
   frontmatter,
-  code,
   children,
+  code,
 }) => {
   const pathname = usePathname();
   const [mounted, setMounted] = useState(false);
@@ -27,8 +28,6 @@ const PostWrapper: FC<PropsWithChildren<PostWrapperProps>> = ({
   useEffect(() => {
     setMounted(true);
   }, []);
-
-  const parentPath = pathname.split("/").slice(0, -1).join("/") || "/";
 
   return (
     <>
@@ -42,7 +41,12 @@ const PostWrapper: FC<PropsWithChildren<PostWrapperProps>> = ({
 
       {/* Header */}
       {(frontmatter.display ?? frontmatter.title) && (
-        <div className={cn("prose mx-auto mb-8", frontmatter.wrapperClass)}>
+        <div
+          className={cn(
+            "prose slide-enter mx-auto mb-8 px-7",
+            frontmatter.wrapperClass
+          )}
+        >
           <h1 className="slide-enter-50">
             {frontmatter.display ?? frontmatter.title}
           </h1>
@@ -84,21 +88,36 @@ const PostWrapper: FC<PropsWithChildren<PostWrapperProps>> = ({
       )}
 
       {/* Article Content */}
-      <article className={cn(frontmatter.class)}>
-        <div className="prose slide-enter-content m-auto">
+      <article
+        style={
+          {
+            "--main-padding": "3rem",
+            "--footer": "70px",
+            "--page-header": !!(frontmatter.display ?? frontmatter.title)
+              ? "96px"
+              : 0,
+            "--page-footer-nav": pathname !== "/" ? "20px" : 0,
+          } as React.CSSProperties
+        }
+        className={cn(
+          "px-7",
+          frontmatter.fixedScreen &&
+            "md:h-[calc(100svh-var(--footer)-var(--page-header)-var(--page-footer-nav)-var(--main-padding))]",
+          !frontmatter.fullWidth && "md:px-0"
+        )}
+      >
+        <div
+          className={cn(
+            "prose slide-enter-content m-auto",
+            frontmatter.bodyClass
+          )}
+        >
           <MDXRenderer code={code} />
           {children}
         </div>
       </article>
-
-      {/* Footer */}
-      {pathname !== "/" && (
-        <div className="prose slide-enter-content mx-auto mt-8 mb-8 print:hidden">
-          <span className="font-mono opacity-50">&gt; </span>
-          <Link href={parentPath}>
-            <span className="font-mono opacity-50 hover:opacity-75">cd ..</span>
-          </Link>
-        </div>
+      {!frontmatter.hideFooter && (
+        <Footer isFullWidth={frontmatter.fullWidth} />
       )}
     </>
   );

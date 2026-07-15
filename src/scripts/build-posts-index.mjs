@@ -6,7 +6,7 @@ import path from "node:path";
 
 const ROOT = path.join(process.cwd(), "src", "content");
 const POSTS_ROOT = path.join(ROOT, "posts");
-const INDEX_PATH = path.join(POSTS_ROOT, "index.json");
+const PROJECTS_ROOT = path.join(ROOT, "projects");
 
 const parseMetadata = (data, slug, filePath) => {
   return {
@@ -29,11 +29,11 @@ const parseMetadata = (data, slug, filePath) => {
   };
 };
 
-const buildPostsIndex = async () => {
+const buildContentIndex = async (rootDir) => {
   console.log(`Building posts index...`);
-  const files = await glob(`${POSTS_ROOT}/**/*.mdx`);
+  const files = await glob(`${rootDir}/**/*.mdx`);
 
-  const posts = [];
+  const array = [];
   for (const file of files) {
     // skip index file
     if (file.endsWith("index.mdx")) {
@@ -45,18 +45,24 @@ const buildPostsIndex = async () => {
 
     const slug = data.slug || path.basename(file, ".mdx");
     const filePath = file;
-    posts.push(parseMetadata(data, slug, filePath));
+    array.push(parseMetadata(data, slug, filePath));
   }
   // Sort by newest first
-  posts.sort((a, b) => dayjs(b.date).diff(dayjs(a.date)));
+  array.sort((a, b) => dayjs(b.date).diff(dayjs(a.date)));
 
-  await fs.writeFile(INDEX_PATH, JSON.stringify(posts, null, 2));
+  const INDEX_PATH = path.join(rootDir, "index.json");
+  await fs.writeFile(INDEX_PATH, JSON.stringify(array, null, 2));
 
-  console.log(`Posts index built: ${INDEX_PATH}`);
-  console.log(`${posts.length} posts found`);
+  console.log(`Build index for Root ${rootDir}: ${INDEX_PATH}`);
+  console.log(`${array.length} file found`);
 };
 
-buildPostsIndex().catch((err) => {
+buildContentIndex(POSTS_ROOT).catch((err) => {
   console.error("Error building posts index", err);
+  process.exit(1);
+});
+
+buildContentIndex(PROJECTS_ROOT).catch((err) => {
+  console.error("Error building projeccts index", err);
   process.exit(1);
 });

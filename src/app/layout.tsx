@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 import { JetBrains_Mono } from "next/font/google";
 
-import { satoshi } from "@/lib/fonts";
+import { roxborough, satoshi } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
 
 import ArtBackground from "@/components/ArtBackground";
-import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { ThemeProvider } from "@/components/ThemeProvider";
 
@@ -49,7 +48,8 @@ export default function RootLayout({
         className={cn(
           `antialiased`,
           fontSans.variable,
-          robotoCondensed.variable
+          robotoCondensed.variable,
+          roxborough.variable
         )}
       >
         <ThemeProvider
@@ -58,10 +58,9 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Header />
-          <main className="mt-16 overflow-x-hidden px-7 py-10">
+          <main className="mt-12 overflow-x-hidden pt-8 md:mt-0">
             <ArtBackground />
             {children}
-            <Footer />
           </main>
         </ThemeProvider>
       </body>

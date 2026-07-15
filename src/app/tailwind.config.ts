@@ -7,17 +7,17 @@ export default {
       typography: {
         DEFAULT: {
           css: {
-            maxWidth: "65ch",
+            maxWidth: "75ch",
             color: "var(--fg)",
 
-            a: {
+            "a:not([data-custom=true])": {
               color: "var(--fg-deeper)",
               fontWeight: "inherit",
               textDecoration: "none",
               borderBottom: "1px solid rgba(125, 125, 125, 0.3)",
               transition: "border 0.3s ease-in-out",
             },
-            "a:hover": {
+            "a:hover:not([data-custom=true])": {
               borderBottom: "1px solid var(--fg)",
             },
 
