@@ -1,4 +1,6 @@
-import { getPostFrontmatter, getPostsSlugs } from "@/lib/file-service";
+import { Metadata } from "next";
+
+import { getFrontmatter, getPostsSlugs } from "@/lib/file-service";
 import getBaseUrl from "@/lib/get-base-url";
 import mdxCompile from "@/lib/mdx-compile";
 
@@ -18,11 +20,11 @@ export async function generateMetadata({
   params,
 }: {
   params: Promise<{ slug: string }>;
-}) {
+}): Promise<Metadata> {
   const { slug } = await params;
-  const post = getPostFrontmatter(`/posts/${slug}`);
+  const post = getFrontmatter(`/posts/${slug}`);
   if (!post) {
-    return;
+    return {};
   }
 
   const { title } = post;

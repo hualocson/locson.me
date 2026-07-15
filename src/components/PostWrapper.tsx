@@ -2,7 +2,6 @@
 
 import React, { FC, PropsWithChildren, useEffect, useState } from "react";
 
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import formatDate from "@/lib/format-date";
@@ -10,16 +9,18 @@ import { cn } from "@/lib/utils";
 
 import ArtBackground from "./ArtBackground";
 import BlurComponent from "./BlurComponent";
+import Footer from "./Footer";
 import MDXRenderer from "./markdown/MDXRenderer";
 
-interface PostWrapperProps {
+interface IPostWrapperProps {
   frontmatter: Frontmatter;
   code: string;
 }
-const PostWrapper: FC<PropsWithChildren<PostWrapperProps>> = ({
+
+const PostWrapper: FC<PropsWithChildren<IPostWrapperProps>> = ({
   frontmatter,
-  code,
   children,
+  code,
 }) => {
   const pathname = usePathname();
   const [mounted, setMounted] = useState(false);
@@ -27,8 +28,6 @@ const PostWrapper: FC<PropsWithChildren<PostWrapperProps>> = ({
   useEffect(() => {
     setMounted(true);
   }, []);
-
-  const parentPath = pathname.split("/").slice(0, -1).join("/") || "/";
 
   return (
     <>
@@ -116,18 +115,7 @@ const PostWrapper: FC<PropsWithChildren<PostWrapperProps>> = ({
           {children}
         </div>
       </article>
-
-      {/* Footer */}
-      {pathname !== "/" && (
-        <div
-          className={cn("prose slide-enter-content mx-auto mt-8 print:hidden")}
-        >
-          <span className="font-mono opacity-50">&gt; </span>
-          <Link href={parentPath}>
-            <span className="font-mono opacity-50 hover:opacity-75">cd ..</span>
-          </Link>
-        </div>
-      )}
+      {!frontmatter.hideFooter && <Footer />}
     </>
   );
 };

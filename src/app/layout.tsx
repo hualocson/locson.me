@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 import { JetBrains_Mono } from "next/font/google";
 
-import { satoshi } from "@/lib/fonts";
+import { roxborough, satoshi } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
 
 import ArtBackground from "@/components/ArtBackground";
-import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { ThemeProvider } from "@/components/ThemeProvider";
 
@@ -49,7 +48,8 @@ export default function RootLayout({
         className={cn(
           `antialiased`,
           fontSans.variable,
-          robotoCondensed.variable
+          robotoCondensed.variable,
+          roxborough.variable
         )}
       >
         <ThemeProvider
@@ -61,7 +61,6 @@ export default function RootLayout({
           <main className="overflow-x-hidden pt-8">
             <ArtBackground />
             {children}
-            <Footer />
           </main>
         </ThemeProvider>
       </body>

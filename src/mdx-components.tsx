@@ -2,7 +2,6 @@ import Link from "next/link";
 
 import type { MDXComponents } from "mdx/types";
 
-import ProjectsPage from "./components/markdown/components/ProjectsPage";
 import MagicLink from "./components/markdown/components/MagicLink";
 import SubNav from "./components/markdown/components/SubNav";
 import YearExperience from "./components/markdown/components/YearExperience";
@@ -14,7 +13,6 @@ const components = {
   MagicLink,
   SubNav,
   YearExperience,
-  ProjectsPage,
   a: (props: LinkProps) => {
     const { href, ...rest } = props;
     if (!href) {

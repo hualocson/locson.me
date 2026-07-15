@@ -4,6 +4,7 @@ import path from "node:path";
 
 const root = path.join(process.cwd(), "src", "content");
 const POSTS_ROOT = path.join(root, "posts");
+const PROJECTS_ROOT = path.join(root, "projects");
 
 export const getPostsSlugs = () => {
   return fs
@@ -13,7 +14,15 @@ export const getPostsSlugs = () => {
     .filter((f) => f !== "index");
 };
 
-export const getPostFrontmatter = (slug: string): IPostFrontmatter => {
+export const getProjectSlugs = () => {
+  return fs
+    .readdirSync(PROJECTS_ROOT)
+    .filter((f) => f.endsWith(".mdx"))
+    .map((f) => f.replace(/\.mdx$/, ""))
+    .filter((f) => f !== "index");
+};
+
+export const getFrontmatter = (slug: string): IPostFrontmatter => {
   const source = fs.readFileSync(path.join(root, `${slug}.mdx`), "utf8");
   const { data } = matter(source);
   return {
@@ -35,6 +44,7 @@ export const getPostFrontmatter = (slug: string): IPostFrontmatter => {
     tocAlwaysOn: data.tocAlwaysOn,
     fixedScreen: !!data.fixedScreen,
     fullWidth: !!data.fullWidth,
+    hideFooter: !!data.hideFooter,
   };
 };
 
@@ -44,5 +54,5 @@ export const getFileData = (slug: string) => {
 };
 
 export const getPostsFrontmatter = () => {
-  return getPostsSlugs().map((slug) => getPostFrontmatter(`/posts/${slug}`));
+  return getPostsSlugs().map((slug) => getFrontmatter(`/posts/${slug}`));
 };

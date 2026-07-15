@@ -6,11 +6,11 @@ import rehypeSlug from "rehype-slug";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkGfm from "remark-gfm";
 
-import { getFileData, getPostFrontmatter } from "./file-service";
+import { getFileData, getFrontmatter } from "./file-service";
 import preProcessMDX from "./pre-process-mdx";
 
 const mdxCompile = async (slug: string) => {
-  const frontmatter = getPostFrontmatter(slug);
+  const frontmatter = getFrontmatter(slug);
   const isTocAlwaysOn = frontmatter.tocAlwaysOn;
   const tocEnabled = frontmatter.toc;
   const file = getFileData(slug);

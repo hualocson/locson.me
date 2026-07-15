@@ -14,6 +14,7 @@ interface Frontmatter {
   fixedScreen?: boolean;
   fullWidth?: boolean;
   art?: "plum" | "dots" | "random";
+  hideFooter?: boolean;
 }
 
 interface IPostFrontmatter {
@@ -36,4 +37,14 @@ interface IPostFrontmatter {
   fixedScreen?: boolean;
   fullWidth?: boolean;
   art: "plum" | "dots" | "random";
+  hideFooter?: boolean;
+}
+
+interface IProjectInfo {
+  name: string;
+  year: number;
+  role: string;
+  category: string;
+  desc: string;
+  url: string;
 }

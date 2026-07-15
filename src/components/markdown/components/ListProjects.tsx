@@ -1,53 +1,67 @@
-import { useEffect, useRef } from "react";
+import React from "react";
 
-import Lenis from "lenis";
+import Image from "next/image";
+import Link from "next/link";
+
+import { PROJECTS } from "@/constants";
+
+import HorizontalScrollContainer from "@/components/HorizontalScrollContainer";
 
 const ListProjects: React.FC = () => {
-  const scrollRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const el = scrollRef.current;
-    if (!el) {
-      return;
-    }
-
-    const isDesktop = window.matchMedia("(min-width: 768px)").matches;
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-    if (!isDesktop || prefersReducedMotion) {
-      return;
-    }
-
-    const lenis = new Lenis({
-      wrapper: el,
-      content: el,
-      orientation: "horizontal",
-      gestureOrientation: "vertical",
-      smoothWheel: true,
-      autoRaf: true,
-      lerp: 0.1,
-      syncTouch: false,
-      wheelMultiplier: 1,
-    });
-
-    return () => {
-      lenis.destroy();
-    };
-  }, []);
-
   return (
-    <div
-      ref={scrollRef}
-      className="hide-scrollbar-x mt-24 flex w-full items-center gap-4 overflow-x-auto"
-    >
-      {Array.from({ length: 10 }).map((_, index) => (
-        <span
-          key={index}
-          className="aspect-square w-44 flex-shrink-0 bg-gray-400 first:ml-7 last:mr-7"
-        ></span>
-      ))}
-    </div>
+    <HorizontalScrollContainer className="hide-scrollbar-x mt-24 flex max-h-64 items-stretch gap-4 overflow-x-auto">
+      {Object.entries(PROJECTS).map(([key, p]) => {
+        return (
+          <React.Fragment key={key}>
+            <Link
+              key={key}
+              href={p.href}
+              data-custom="true"
+              style={
+                {
+                  "--ratio": p.images.hero.ratio,
+                } as React.CSSProperties
+              }
+              className="aspect-[var(--ratio)] w-44 overflow-hidden first:ml-7 last:mr-7"
+            >
+              <div className="relative size-full">
+                <Image
+                  src={p.images.hero.src}
+                  fill
+                  alt={p.images.hero.alt}
+                  className="my-0 object-cover"
+                />
+                <span className="absolute inset-0 ring-1 ring-white/10 ring-inset" />
+              </div>
+            </Link>
+
+            {p.images.frames.map((f) => (
+              <Link
+                key={f.id}
+                href={p.href}
+                data-custom="true"
+                style={
+                  {
+                    "--ratio": f.ratio,
+                  } as React.CSSProperties
+                }
+                className="aspect-[var(--ratio)] h-fit w-44 overflow-hidden first:ml-7 last:mr-7"
+              >
+                <div className="relative size-full">
+                  <Image
+                    src={f.src}
+                    fill
+                    alt={f.alt}
+                    className="my-0 object-cover"
+                  />
+                  <span className="absolute inset-0 ring-1 ring-white/10 ring-inset" />
+                </div>
+              </Link>
+            ))}
+          </React.Fragment>
+        );
+      })}
+    </HorizontalScrollContainer>
   );
 };
 
