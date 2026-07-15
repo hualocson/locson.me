@@ -2,6 +2,7 @@
 
 import { FC, PropsWithChildren, useEffect, useRef } from "react";
 
+import useIsMobile from "@/app/hooks/isMobile";
 import Lenis from "lenis";
 
 const HorizontalScrollContainer: FC<
@@ -10,6 +11,7 @@ const HorizontalScrollContainer: FC<
   }>
 > = ({ className, children }) => {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const el = scrollRef.current;
@@ -17,11 +19,10 @@ const HorizontalScrollContainer: FC<
       return;
     }
 
-    const isDesktop = window.matchMedia("(min-width: 768px)").matches;
     const prefersReducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
-    if (!isDesktop || prefersReducedMotion) {
+    if (!isMobile || prefersReducedMotion) {
       return;
     }
 
@@ -40,7 +41,7 @@ const HorizontalScrollContainer: FC<
     return () => {
       lenis.destroy();
     };
-  }, []);
+  }, [isMobile]);
 
   return (
     <div ref={scrollRef} className={className}>
