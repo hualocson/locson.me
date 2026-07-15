@@ -25,7 +25,7 @@ const PROJECTS = {
           id: "betterprompt-f2",
           src: bp2,
           alt: "BetterPrompt Frame 2",
-          ratio: "2992/2160",
+          ratio: "2560/1114",
         },
         {
           id: "betterprompt-f3",

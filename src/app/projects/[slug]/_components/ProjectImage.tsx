@@ -16,6 +16,9 @@ const ProjectImage: React.FC<IProjectImageProps> = ({ project }) => {
         alt={project.images.hero.alt}
         fill
         className="my-0 object-cover"
+        sizes="50vw"
+        priority
+        quality={90}
       />
     </div>
   );

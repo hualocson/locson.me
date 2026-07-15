@@ -41,7 +41,10 @@ const FrameItem: FC<IFrameItemProps> = ({ frame, isFull = false }) => {
         src={frame.src}
         fill
         alt={frame.alt}
+        sizes="100vw"
         className="my-0 object-cover"
+        priority
+        quality={90}
       />
     </div>
   );
