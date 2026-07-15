@@ -1,14 +1,17 @@
 import React from "react";
 
+import { ActiveProjectProvider } from "./ActiveProjectContext";
 import ListProjects from "./ListProjects";
 import ProjectsHeroSection from "./ProjectsHeroSection";
 
 const ProjectsPageBody: React.FC = () => {
   return (
-    <div className="flex flex-col">
-      <ProjectsHeroSection title="My Projects" />
-      <ListProjects />
-    </div>
+    <ActiveProjectProvider>
+      <div className="flex flex-col">
+        <ProjectsHeroSection />
+        <ListProjects />
+      </div>
+    </ActiveProjectProvider>
   );
 };
 
