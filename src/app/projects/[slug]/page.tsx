@@ -85,9 +85,9 @@ const ProjectPageDetail = async ({
         <Link href={"/projects"} data-custom="true">
           <Button
             size={"icon-lg"}
-            className="size-14 rounded-full bg-[oklch(0.92_0.004_286.32)] hover:scale-110 hover:bg-[oklch(0.92_0.004_286.32)]"
+            className="size-14 rounded-full invert-100 hover:scale-110"
           >
-            <XIcon className="size-5 text-[oklch(0.21_0.006_285.885)]" />
+            <XIcon className="text-foreground size-5 invert-100" />
           </Button>
         </Link>
       </div>
