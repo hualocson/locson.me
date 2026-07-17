@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef } from "react";
 
+import { useTheme } from "next-themes";
 import {
   Application,
   Graphics,
@@ -15,8 +16,11 @@ import { createNoise3D } from "simplex-noise";
 const SCALE = 200;
 const LENGTH = 5;
 const SPACING = 15;
-const BACKGROUND_COLOR = "#ffffff";
+const BACKGROUND_COLOR = "#F8f8f7";
+const DARK_BACKGROUND_COLOR = "#1c1c1c";
+
 const DOT_COLOR = 0xcccccc;
+const DARK_DOT_COLOR = 0x39393c;
 
 // Global state
 let noise3d: ReturnType<typeof createNoise3D>;
@@ -41,10 +45,13 @@ const getForceOnPoint = (x: number, y: number, z: number): number => {
 };
 
 // Create dot texture
-const createDotTexture = (app: Application): Texture => {
+const createDotTexture = (
+  app: Application,
+  theme: string | undefined
+): Texture => {
   const graphics = new Graphics();
   graphics.circle(0, 0, 1);
-  graphics.fill(DOT_COLOR);
+  graphics.fill(theme === "dark" ? DARK_DOT_COLOR : DOT_COLOR);
   return app.renderer.generateTexture(graphics);
 };
 
@@ -83,6 +90,7 @@ const clearPoints = (): void => {
 export default function ArtDots() {
   const containerRef = useRef<HTMLDivElement>(null);
   const appRef = useRef<Application | null>(null);
+  const { resolvedTheme } = useTheme();
   const isInitializedRef = useRef(false);
 
   const handleResize = useCallback(() => {
@@ -99,7 +107,7 @@ export default function ArtDots() {
     // Add new points for the new dimensions
     const particleContainer = appRef.current.stage
       .children[0] as ParticleContainer;
-    const dotTexture = createDotTexture(appRef.current);
+    const dotTexture = createDotTexture(appRef.current, resolvedTheme);
     addPoints(dotTexture, particleContainer, width, height);
   }, []);
 
@@ -119,7 +127,8 @@ export default function ArtDots() {
         // Create PIXI application
         const app = new Application();
         await app.init({
-          background: BACKGROUND_COLOR,
+          background:
+            resolvedTheme === "dark" ? DARK_BACKGROUND_COLOR : BACKGROUND_COLOR,
           antialias: true,
           resolution: window.devicePixelRatio || 1,
           resizeTo: containerRef.current!,
@@ -142,7 +151,7 @@ export default function ArtDots() {
         app.stage.addChild(particleContainer);
 
         // Create dot texture and add initial points
-        const dotTexture = createDotTexture(app);
+        const dotTexture = createDotTexture(app, resolvedTheme);
         const width = window.innerWidth;
         const height = window.innerHeight;
         addPoints(dotTexture, particleContainer, width, height);
@@ -198,12 +207,12 @@ export default function ArtDots() {
       clearPoints();
       isInitializedRef.current = false;
     };
-  }, [handleResize]);
+  }, [handleResize, resolvedTheme]);
 
   return (
     <div
       ref={containerRef}
-      className="pointer-events-none fixed inset-0 -z-10 dark:invert print:hidden"
+      className="pointer-events-none fixed inset-0 -z-10 print:hidden"
     />
   );
 }
