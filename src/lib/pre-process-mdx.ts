@@ -13,13 +13,13 @@ const preProcessMDX = (source: string) => {
         link: "https://locson-me.vercel.app",
         imageUrl: "https://locson-me.vercel.app/logo.svg",
       },
+      Spendly: {
+        link: "https://locson-me.vercel.app/projects/spendly",
+        imageUrl: "https://spendly-expense-jot.vercel.app/favicon-196.png",
+      },
       "Notion ai personal": {
         link: "https://notion-ai-personal.vercel.app",
         imageUrl: "https://notion-ai-personal.vercel.app/icon.png",
-      },
-      "Bookstore Demo": {
-        link: "https://bookstore-fe-three.vercel.app/",
-        imageUrl: "https://bookstore-fe-three.vercel.app/books-logo.svg",
       },
     },
   });
