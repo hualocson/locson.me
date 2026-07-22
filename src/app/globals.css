@@ -258,9 +258,9 @@
 
   @media (prefers-reduced-motion: no-preference) {
     html:not(.no-sliding) [slide-enter],
-    html:not(.no-sliding) .slide-enter,
+    html:not(.no-sliding) .slide-enter[data-finished="true"],
     html:not(.no-sliding)
-      .slide-enter-content
+      .slide-enter-content[data-finished="true"]
       > *:not(:has(.table-of-contents)) {
       --enter-stage: 0;
       --enter-step: 90ms;
