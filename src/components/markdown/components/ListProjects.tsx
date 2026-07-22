@@ -18,7 +18,7 @@ const ListProjects: React.FC = () => {
   const isMobile = useIsMobile();
 
   return (
-    <HorizontalScrollContainer className="md:hide-scrollbar-x mt-24 flex flex-col gap-4 md:max-h-64 md:flex-row md:items-stretch md:overflow-x-auto">
+    <HorizontalScrollContainer className="md:hide-scrollbar-x hide-scrollbar-x mt-24 flex flex-col gap-4 md:max-h-64 md:flex-row md:items-stretch md:overflow-x-auto">
       {Object.entries(PROJECTS).map(([key, p]) => {
         const slug = key as TProjectSlug;
         const projectName = p.info.name;
@@ -78,8 +78,16 @@ const ListProjects: React.FC = () => {
                       "--ratio": f.ratio,
                     } as React.CSSProperties
                   }
-                  onMouseEnter={() => setActiveSlug(slug)}
-                  onMouseLeave={() => setActiveSlug(null)}
+                  onMouseEnter={() => {
+                    if (!isMobile) {
+                      setActiveSlug(slug);
+                    }
+                  }}
+                  onMouseLeave={() => {
+                    if (!isMobile) {
+                      setActiveSlug(null);
+                    }
+                  }}
                   className="aspect-[var(--ratio)] h-fit w-full overflow-hidden md:w-44 md:first:ml-7 md:last:mr-7"
                 >
                   <div className="relative size-full">

@@ -1,9 +1,14 @@
-import bp1 from "@/resources/images/projects/betterprompt/frame/f1.png";
-import bp2 from "@/resources/images/projects/betterprompt/frame/f2.png";
-import bp3 from "@/resources/images/projects/betterprompt/frame/f3.png";
-import bp4 from "@/resources/images/projects/betterprompt/frame/f4.png";
-import bp5 from "@/resources/images/projects/betterprompt/frame/f5.png";
-import betterpropmtHeroImage from "@/resources/images/projects/betterprompt/frame/project-image.png";
+import bp1 from "@/resources/images/projects/betterprompt/frames/f1.png";
+import bp2 from "@/resources/images/projects/betterprompt/frames/f2.png";
+import bp3 from "@/resources/images/projects/betterprompt/frames/f3.png";
+import bp4 from "@/resources/images/projects/betterprompt/frames/f4.png";
+import bp5 from "@/resources/images/projects/betterprompt/frames/f5.png";
+import betterpropmtHeroImage from "@/resources/images/projects/betterprompt/frames/project-image.png";
+import sp1 from "@/resources/images/projects/spendly/frames/f1.png";
+import sp2 from "@/resources/images/projects/spendly/frames/f2.png";
+import sp3 from "@/resources/images/projects/spendly/frames/f3.png";
+import sp4 from "@/resources/images/projects/spendly/frames/f4.png";
+import spendlyHeroImage from "@/resources/images/projects/spendly/frames/project-image.png";
 
 const PROJECTS = {
   betterprompt: {
@@ -54,6 +59,51 @@ const PROJECTS = {
       category: "AI & E-commerce",
       desc: "A modern AI prompt marketplace where users can explore, save, and publish prompts for various AI models. Designed with a clean user experience, responsive layouts, and fast performance.",
       url: "https://betterprompt.me",
+    } satisfies IProjectInfo,
+  },
+
+  spendly: {
+    href: "/projects/spendly",
+    images: {
+      hero: {
+        src: spendlyHeroImage,
+        alt: "Spendly project image",
+        ratio: "1880/2160",
+      },
+      frames: [
+        {
+          id: "spendly-f1",
+          src: sp1,
+          alt: "Spendly Frame 1",
+          ratio: "3108/2160",
+        },
+        {
+          id: "spendly-f2",
+          src: sp2,
+          alt: "Spendly Frame 2",
+          ratio: "3100/2160",
+        },
+        {
+          id: "spendly-f3",
+          src: sp3,
+          alt: "Spendly Frame 3",
+          ratio: "2560/1128",
+        },
+        {
+          id: "spendly-f4",
+          src: sp4,
+          alt: "Spendly Frame 4",
+          ratio: "3108/2160",
+        },
+      ],
+    },
+    info: {
+      name: "Spendly",
+      role: "Frontend Developer, Designer",
+      year: 2025,
+      category: "AI & Personal Finance",
+      desc: "Spendly is a personal expense tracking web application that helps users manage weekly and monthly budgets, monitor spending habits, and gain actionable insights through intuitive dashboards, reports, and budget analytics.",
+      url: "https://github.com/hualocson/ai-market-expend-helper",
     } satisfies IProjectInfo,
   },
 };
