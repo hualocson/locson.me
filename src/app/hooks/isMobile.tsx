@@ -1,77 +1,26 @@
-"use client";
+import * as React from "react";
 
-import { useEffect, useState } from "react";
+const MOBILE_BREAKPOINT = 768;
 
-interface UseIsMobileReturn {
-  isMobile: boolean;
-  isLoading: boolean;
-}
-
-const useIsMobile = (): UseIsMobileReturn => {
-  const [isMobile, setIsMobile] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const checkIsMobile = () => {
-      // Check using media query
-      const mediaQuery = window.matchMedia("(max-width: 768px)");
-
-      // Check using user agent (additional detection)
-      const userAgent = navigator.userAgent.toLowerCase();
-      const mobileKeywords = [
-        "android",
-        "webos",
-        "iphone",
-        "ipad",
-        "ipod",
-        "blackberry",
-        "windows phone",
-        "mobile",
-      ];
-
-      const isMobileUA = mobileKeywords.some((keyword) =>
-        userAgent.includes(keyword)
-      );
-
-      // Combine both checks - prioritize media query but consider user agent
-      const isMobileDevice =
-        mediaQuery.matches || (isMobileUA && window.innerWidth <= 768);
-
-      setIsMobile(isMobileDevice);
-      setIsLoading(false);
-    };
-
-    // Initial check
-    checkIsMobile();
-
-    // Listen for media query changes
-    const mediaQuery = window.matchMedia("(max-width: 768px)");
-    const handleChange = () => checkIsMobile();
-
-    if (mediaQuery.addEventListener) {
-      mediaQuery.addEventListener("change", handleChange);
-    } else {
-      // Fallback for older browsers
-      mediaQuery.addListener(handleChange);
+function useIsMobile(breakpoint = MOBILE_BREAKPOINT) {
+  const [isMobile, setIsMobile] = React.useState<boolean>(() => {
+    if (typeof window === "undefined") {
+      return false; // SSR default
     }
+    return window.innerWidth < breakpoint;
+  });
 
-    // Listen for window resize
-    window.addEventListener("resize", checkIsMobile);
-
-    return () => {
-      if (mediaQuery.removeEventListener) {
-        mediaQuery.removeEventListener("change", handleChange);
-      } else {
-        mediaQuery.removeListener(handleChange);
-      }
-      window.removeEventListener("resize", checkIsMobile);
+  React.useEffect(() => {
+    const mql = window.matchMedia(`(max-width: ${breakpoint - 1}px)`);
+    const onChange = () => {
+      setIsMobile(window.innerWidth < breakpoint);
     };
+    mql.addEventListener("change", onChange);
+    setIsMobile(window.innerWidth < breakpoint);
+    return () => mql.removeEventListener("change", onChange);
   }, []);
 
-  return {
-    isMobile,
-    isLoading,
-  };
-};
+  return !!isMobile;
+}
 
 export default useIsMobile;
