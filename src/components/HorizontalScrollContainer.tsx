@@ -22,7 +22,7 @@ const HorizontalScrollContainer: FC<
     const prefersReducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
-    if (!isMobile || prefersReducedMotion) {
+    if (isMobile || prefersReducedMotion) {
       return;
     }
 
