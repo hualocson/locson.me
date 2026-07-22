@@ -3,9 +3,11 @@ import { JetBrains_Mono } from "next/font/google";
 
 import { roxborough, satoshi } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
+import { TransitionProvider } from "@/providers/TransitionProvider";
 
 import ArtBackground from "@/components/ArtBackground";
 import Header from "@/components/Header";
+import InitialTransition from "@/components/InitialTransition";
 import { ThemeProvider } from "@/components/ThemeProvider";
 
 import "./globals.css";
@@ -52,17 +54,20 @@ export default function RootLayout({
           roxborough.variable
         )}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          disableTransitionOnChange
-        >
-          <Header />
-          <main className="mt-12 overflow-x-hidden pt-8 md:mt-0">
-            <ArtBackground />
-            {children}
-          </main>
-        </ThemeProvider>
+        <TransitionProvider>
+          <InitialTransition />
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            disableTransitionOnChange
+          >
+            <Header />
+            <main className="mt-12 overflow-x-hidden pt-8 md:mt-0">
+              <ArtBackground />
+              {children}
+            </main>
+          </ThemeProvider>
+        </TransitionProvider>
       </body>
     </html>
   );

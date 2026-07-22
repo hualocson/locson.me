@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 
 import formatDate from "@/lib/format-date";
 import { cn } from "@/lib/utils";
+import { useLayoutTransition } from "@/providers/TransitionProvider";
 
 import ArtBackground from "./ArtBackground";
 import BlurComponent from "./BlurComponent";
@@ -24,6 +25,7 @@ const PostWrapper: FC<PropsWithChildren<IPostWrapperProps>> = ({
 }) => {
   const pathname = usePathname();
   const [mounted, setMounted] = useState(false);
+  const { finished } = useLayoutTransition();
 
   useEffect(() => {
     setMounted(true);
@@ -42,7 +44,9 @@ const PostWrapper: FC<PropsWithChildren<IPostWrapperProps>> = ({
       {/* Header */}
       {(frontmatter.display ?? frontmatter.title) && (
         <div
+          data-finished={finished}
           className={cn(
+            finished ? "opacity-100" : "opacity-0",
             "prose slide-enter mx-auto mb-8 px-7",
             frontmatter.wrapperClass
           )}
@@ -105,7 +109,9 @@ const PostWrapper: FC<PropsWithChildren<IPostWrapperProps>> = ({
         )}
       >
         <div
+          data-finished={finished}
           className={cn(
+            finished ? "opacity-100" : "opacity-0",
             "prose slide-enter-content m-auto px-7",
             frontmatter.bodyClass,
             frontmatter.fullWidth && "md:px-0"
